@@ -5,9 +5,9 @@ package cn.phoenix.evacafe.domain;
  */
 public class Product {
     //商品编号
-    private int product_id;
+    private int productId;
     //商品名称
-    private String product_name;
+    private String productName;
     /**
      * 商品种类
      * <p/>
@@ -70,7 +70,7 @@ public class Product {
     private double capacity;
     /**
      * 含糖量，，只有当type = （成品）时，此属性才会生效
-     *
+     * <p/>
      * 无糖，低糖，中糖，高糖
      */
     private String sugar;
@@ -80,7 +80,7 @@ public class Product {
     private boolean containsMilk;
     /**
      * 香料,，只有当type = （成品）时，此属性才会生效
-     *
+     * <p/>
      * 肉桂，咳咳，豆蔻，薄荷，丁香
      * 柠檬，菠萝，香蕉
      * 白兰地，威士忌，兰姆酒，薄荷利口酒
@@ -88,7 +88,7 @@ public class Product {
     private String spice;
     /**
      * 咖啡机类别，只有当type = （咖啡机）时，此属性才会生效
-     *
+     * <p/>
      * 全自动，泵压式，手动式
      */
     private String makerType;
@@ -102,22 +102,6 @@ public class Product {
     private int ordinary;
     //差评数
     private int bad;
-
-    public int getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
-    }
-
-    public String getProduct_name() {
-        return product_name;
-    }
-
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
-    }
 
     public String getType() {
         return type;
@@ -293,5 +277,21 @@ public class Product {
 
     public void setBad(int bad) {
         this.bad = bad;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

@@ -5,19 +5,11 @@ package cn.phoenix.evacafe.domain;
  */
 public class Pics {
     //图片编号，主键
-    private int pic_id;
+    private int picId;
     //图片路径，存储绝对路径
     private String path;
     //商品编号
-    private int product_id;
-
-    public int getPic_id() {
-        return pic_id;
-    }
-
-    public void setPic_id(int pic_id) {
-        this.pic_id = pic_id;
-    }
+    private int productId;
 
     public String getPath() {
         return path;
@@ -27,11 +19,19 @@ public class Pics {
         this.path = path;
     }
 
-    public int getProduct_id() {
-        return product_id;
+    public int getPicId() {
+        return picId;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setPicId(int picId) {
+        this.picId = picId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 }

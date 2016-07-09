@@ -11,11 +11,11 @@ public class User {
     // 余额
     private double rest;
     // 已购买物品次数
-    private int buy_times;
+    private int buyTimes;
     // 待收款的商品数
-    private int wait_to_accept;
+    private int waitToAccept;
     // 待支付的商品数
-    private int wait_to_pay;
+    private int waitToPay;
     // 手机号码
     private String phoneNumber;
 
@@ -43,28 +43,28 @@ public class User {
         this.rest = rest;
     }
 
-    public int getBuy_times() {
-        return buy_times;
+    public int getBuyTimes() {
+        return buyTimes;
     }
 
-    public void setBuy_times(int buy_times) {
-        this.buy_times = buy_times;
+    public void setBuyTimes(int buyTimes) {
+        this.buyTimes = buyTimes;
     }
 
-    public int getWait_to_accept() {
-        return wait_to_accept;
+    public int getWaitToAccept() {
+        return waitToAccept;
     }
 
-    public void setWait_to_accept(int wait_to_accept) {
-        this.wait_to_accept = wait_to_accept;
+    public void setWaitToAccept(int waitToAccept) {
+        this.waitToAccept = waitToAccept;
     }
 
-    public int getWait_to_pay() {
-        return wait_to_pay;
+    public int getWaitToPay() {
+        return waitToPay;
     }
 
-    public void setWait_to_pay(int wait_to_pay) {
-        this.wait_to_pay = wait_to_pay;
+    public void setWaitToPay(int waitToPay) {
+        this.waitToPay = waitToPay;
     }
 
     public String getPhoneNumber() {

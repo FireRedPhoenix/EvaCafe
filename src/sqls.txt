@@ -1,0 +1,82 @@
+
+EvaCafe
+
+//创建User表
+create table User(
+username varchar(20) primary key,
+password varchar(20) not null,
+rest double not null,
+buyTimes int not null,
+waitToAccept int not null,
+waitToPay int not null,
+phoneNumber varchar(11)
+)
+
+//创建Product表
+create table Product(
+productId int primary key auto_increment,
+productName varchar(30),
+type varchar(20),
+brand varchar(30),
+packaging varchar(30),
+level varchar(10),
+introduction varchar(100),
+producingArea varchar(20),
+quantity int,
+price double,
+tast varchar(8),
+cupSize varchar(5),
+concentrations varchar(8),
+material varchar(10),
+weight double,
+capacity double,
+sugar varchar(8),
+containsMilk bit,
+spice varchar(18),
+makerType varchar(18),
+power int,
+good int not null,
+ordinary int not null,
+bad int not null
+)
+
+//创建Cart（购物车）表
+create table cart(
+cartId int primary key auto_increment,
+username varchar(20),
+productId int,
+foreign key(username) references User(username)
+)
+
+//创建Orders表
+create table Orders(
+orderId int primary key auto_increment,
+username varchar(20),
+productId int,
+status varchar(20),
+productQuantity int,
+isEvaluated bit,
+time varchar(20),
+address varchar(50),
+foreign key(username) references User(username),
+foreign key(productId) references Product(productId)
+)
+
+//创建Pics表
+create table Pics(
+picId int primary key auto_increment,
+path varchar(50),
+productId int,
+foreign key(productId) references Product(productId)
+)
+
+insert into Product values(null,'中原G7三合一速溶咖啡','咖啡粉','中原','袋装','AA','地处热带季风区的越南是好咖啡的出产地，浓香造就了越南咖啡','越南',7261,62.8,'狂野',null,null,null,null,null,null,null,null,null,null,23,2,5);
+insert into Product values(null,'Nestle雀巢咖啡','成品','雀巢','null','A','随时沉醉在香浓的咖啡中，如身临咖啡馆','中国大陆',522,61.8,'清香','大','脂状',null,null,null,'高糖',0,'桂圆',null,null,49,1,10);
+insert into Pics values (null,'未可知',1);
+insert into Orders values (null,'王成',1,'预备发货',12,0,'2016-7-9 10:33','中关村');
+insert into Orders values (null,'王成',2,'运送中',5,0,'2016-7-10 12:33','华农');
+insert into Cart values (null,'王成',1);
+
+select Product.productName,Orders.productId,orderId,status,productQuantity,isEvaluated,time,address,Product.price,Pics.path from Orders,Pics,Product where Orders.username='王成' and Orders.productId = Product.productId;
+
+

@@ -3,4 +3,31 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <servlet>
+        <servlet-name>LogInOutServlet</servlet-name>
+        <servlet-class>cn.phoenix.evacafe.web.LogInOutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogInOutServlet</servlet-name>
+        <url-pattern>/LogInOutServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>cn.phoenix.evacafe.web.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>cn.phoenix.evacafe.web.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/servlet/OrderServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

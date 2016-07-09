@@ -3,13 +3,13 @@ package cn.phoenix.evacafe.domain;
 /**
  * Created by Phoenix on 2016/7/8.
  */
-public class Order {
+public class Orders {
     //用户名，外键
     private String username;
     //商品编号
-    private int product_id;
+    private int productId;
     //订单编号
-    private int order_id;
+    private int orderId;
     /**
      * 状态
      * <p/>
@@ -17,13 +17,19 @@ public class Order {
      */
     private String status;
     //商品订货数量
-    private int product_quantity;
+    private int productQuantity;
     //是否已评价
     private boolean isEvaluated;
     //下单时间
     private String time;
     //接收人地址
     private String address;
+    //商品名称
+    private String productName;
+    //商品单价
+    private double price;
+    //商品在数据库中存储的第一张图片的路径
+    private String path;
 
     public String getUsername() {
         return username;
@@ -33,36 +39,12 @@ public class Order {
         this.username = username;
     }
 
-    public int getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
-    }
-
-    public int getOrder_id() {
-        return order_id;
-    }
-
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
-    }
-
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public int getProduct_quantity() {
-        return product_quantity;
-    }
-
-    public void setProduct_quantity(int product_quantity) {
-        this.product_quantity = product_quantity;
     }
 
     public boolean isEvaluated() {
@@ -87,5 +69,53 @@ public class Order {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public int getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
