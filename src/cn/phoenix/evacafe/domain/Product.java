@@ -1,5 +1,7 @@
 package cn.phoenix.evacafe.domain;
 
+import java.util.List;
+
 /**
  * Created by Phoenix on 2016/7/8.
  */
@@ -102,6 +104,8 @@ public class Product {
     private int ordinary;
     //差评数
     private int bad;
+    //商品所有图图片的路径
+    private List<String> paths;
 
     public String getType() {
         return type;
@@ -293,5 +297,13 @@ public class Product {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public List<String> getPaths() {
+        return paths;
+    }
+
+    public void setPaths(List<String> paths) {
+        this.paths = paths;
     }
 }

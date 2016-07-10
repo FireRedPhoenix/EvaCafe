@@ -2,6 +2,7 @@ package cn.phoenix.evacafe.service;
 
 import cn.phoenix.evacafe.dao.UserDao;
 import cn.phoenix.evacafe.domain.Orders;
+import cn.phoenix.evacafe.domain.Product;
 import cn.phoenix.evacafe.domain.User;
 import cn.phoenix.evacafe.factory.DaoFactory;
 
@@ -36,7 +37,106 @@ public class UserService {
         return userDao.addUser(username, password, phoneNumber);
     }
 
+    /**
+     * 查询用户所有的订单
+     *
+     * @param username 用户名
+     * @return 返回用户所有的订单
+     */
     public List<Orders> userOrders(String username) {
         return userDao.findOrdersByName(username);
+    }
+
+    /**
+     * 通过主键寻找订单
+     *
+     * @param orderId
+     * @return 返回对应的订单，若找不到则返回null
+     */
+    public Orders userOrder(int orderId) {
+        return userDao.findOrderById(orderId);
+    }
+
+    /**
+     * 用户为某份订单支付
+     *
+     * @param username
+     * @param orderId
+     * @param money
+     */
+    public void userPay(String username, int orderId, double money) {
+        userDao.updateUserMoney(username, money);
+        userDao.updateOrderStatus(orderId, "预备发货");
+    }
+
+    /**
+     * 用户退货
+     *
+     * @param username 用户名
+     * @param orderId  订单主键
+     * @return 返回用户修改后的余额
+     */
+    public double userReject(String username, int orderId) {
+        //设置订单状态已完成
+        userDao.updateOrderStatus(orderId, "已完成");
+        //获取对应的订单和用户，找不到则抛出异常
+        Orders order = userDao.findOrderById(orderId);
+        User user = userDao.findUserByName(username);
+        if (order == null || user == null) {
+            throw new RuntimeException("order or user is null.");
+        }
+
+        double totalMoney = order.getPrice() * order.getProductQuantity();
+        double rest = user.getRest();
+
+        userDao.updateUserMoney(username, rest + totalMoney);
+        return rest + totalMoney;
+    }
+
+    /**
+     * 对已完成的订单进行评价
+     *
+     * @param orderId
+     * @param type
+     */
+    public void orderEvaluate(int orderId, String type) {
+        userDao.updateOrderEvaluate(orderId);
+        int prodId = userDao.findProdIdByOrderId(orderId);
+        //更新物品的评价数
+        if (type.equals("good")) {
+            userDao.increProdEvaluation(prodId, "good");
+        } else if (type.equals("bad")) {
+            userDao.increProdEvaluation(prodId, "bad");
+        } else if (type.equals("ordinary")) {
+            userDao.increProdEvaluation(prodId, "ordinary");
+        }
+    }
+
+    /**
+     * 取消订单
+     *
+     * @param orderId
+     */
+    public void orderCancel(int orderId) {
+        userDao.updateOrderStatus(orderId, "已取消");
+    }
+
+    /**
+     * 订单已完成
+     *
+     * @param orderId
+     */
+    public void orderFinish(int orderId) {
+        userDao.updateOrderStatus(orderId, "已完成");
+    }
+
+    /**
+     * 通过prodId找到Product
+     *
+     * @param prodId
+     * @return
+     */
+    public Product findProdById(int prodId) {
+        return userDao.findProdById(prodId);
     }
 }

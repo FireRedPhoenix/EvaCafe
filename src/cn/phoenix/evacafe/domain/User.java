@@ -4,6 +4,8 @@ package cn.phoenix.evacafe.domain;
  * Created by Phoenix on 2016/7/8.
  */
 public class User {
+    //邮箱
+    private String email;
     // 用户名,主键
     private String username;
     // 密码
@@ -12,7 +14,7 @@ public class User {
     private double rest;
     // 已购买物品次数
     private int buyTimes;
-    // 待收款的商品数
+    // 待接收的商品数
     private int waitToAccept;
     // 待支付的商品数
     private int waitToPay;
@@ -73,5 +75,13 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

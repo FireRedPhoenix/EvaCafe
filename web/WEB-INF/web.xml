@@ -30,4 +30,22 @@
         <url-pattern>/servlet/OrderServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>OrderOpServlet</servlet-name>
+        <servlet-class>cn.phoenix.evacafe.web.OrderOpServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderOpServlet</servlet-name>
+        <url-pattern>/servlet/OrderOpServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProdDetailsServlet</servlet-name>
+        <servlet-class>cn.phoenix.evacafe.web.ProdDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProdDetailsServlet</servlet-name>
+        <url-pattern>/servlet/ProdDetailsServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

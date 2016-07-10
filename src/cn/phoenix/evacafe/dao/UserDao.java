@@ -1,6 +1,7 @@
 package cn.phoenix.evacafe.dao;
 
 import cn.phoenix.evacafe.domain.Orders;
+import cn.phoenix.evacafe.domain.Product;
 import cn.phoenix.evacafe.domain.User;
 
 import java.util.List;
@@ -38,9 +39,59 @@ public interface UserDao {
 
     /**
      * 通过用户名寻找用户的订单
+     *
      * @param username
      * @return 返回订单列表
      */
     public List<Orders> findOrdersByName(String username);
 
+    /**
+     * 通过订单id查询对于的订单
+     *
+     * @param orderId
+     * @return
+     */
+    public Orders findOrderById(int orderId);
+
+    /**
+     * 更新用户的余额
+     *
+     * @param username   用户名
+     * @param totalMoney 用户余额将要减去的金钱
+     */
+    public void updateUserMoney(String username, double totalMoney);
+
+    /**
+     * 更新订单的状态
+     *
+     * @param orderId 订单的主键
+     * @param status  更新后的状态
+     */
+    public void updateOrderStatus(int orderId, String status);
+
+    /**
+     * 将订单的是否评价状态更新为以评价
+     */
+    public void updateOrderEvaluate(int orderId);
+
+    /**
+     * 更新商品的评价数量
+     */
+    public void increProdEvaluation(int prodId, String type);
+
+    /**
+     * 找到订单对于的商品的ID
+     *
+     * @param orderId
+     * @return
+     */
+    public int findProdIdByOrderId(int orderId);
+
+    /**
+     * 通过产品的id寻找Product
+     *
+     * @param prodId
+     * @return
+     */
+    Product findProdById(int prodId);
 }

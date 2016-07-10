@@ -58,6 +58,7 @@ productQuantity int,
 isEvaluated bit,
 time varchar(20),
 address varchar(50),
+isPaid bit,
 foreign key(username) references User(username),
 foreign key(productId) references Product(productId)
 )
@@ -73,10 +74,10 @@ foreign key(productId) references Product(productId)
 insert into Product values(null,'中原G7三合一速溶咖啡','咖啡粉','中原','袋装','AA','地处热带季风区的越南是好咖啡的出产地，浓香造就了越南咖啡','越南',7261,62.8,'狂野',null,null,null,null,null,null,null,null,null,null,23,2,5);
 insert into Product values(null,'Nestle雀巢咖啡','成品','雀巢','null','A','随时沉醉在香浓的咖啡中，如身临咖啡馆','中国大陆',522,61.8,'清香','大','脂状',null,null,null,'高糖',0,'桂圆',null,null,49,1,10);
 insert into Pics values (null,'未可知',1);
-insert into Orders values (null,'王成',1,'预备发货',12,0,'2016-7-9 10:33','中关村');
-insert into Orders values (null,'王成',2,'运送中',5,0,'2016-7-10 12:33','华农');
+insert into Orders values (null,'王成',1,'预备发货',12,0,'2016-7-9 10:33','中关村',0);
+insert into Orders values (null,'王成',2,'运送中',5,0,'2016-7-10 12:33','华农',0);
 insert into Cart values (null,'王成',1);
 
-select Product.productName,Orders.productId,orderId,status,productQuantity,isEvaluated,time,address,Product.price,Pics.path from Orders,Pics,Product where Orders.username='王成' and Orders.productId = Product.productId;
-
+select Orders.isPaid,Product.productName,Orders.productId,orderId,status,productQuantity,isEvaluated,time,address,Product.price,Pics.path from Orders,Pics,Product where Orders.username='王成' and Orders.productId = Product.productId and product.productId = pics.productId;
+update Orders set status='预备发送' where orderId=1
 

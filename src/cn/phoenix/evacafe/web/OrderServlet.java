@@ -1,5 +1,6 @@
 package cn.phoenix.evacafe.web;
 
+import cn.phoenix.evacafe.domain.Orders;
 import cn.phoenix.evacafe.domain.User;
 import cn.phoenix.evacafe.service.UserService;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by Phoenix on 2016/7/9.
@@ -32,8 +34,11 @@ public class OrderServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
 
             UserService userService = new UserService();
-
-            request.getRequestDispatcher("/jsp/myOrder.jsp");
+            List<Orders> orderses = userService.userOrders(user.getUsername());
+            if (orderses != null && orderses.size() > 0) {
+                request.setAttribute("orders", orderses);
+            }
+            request.getRequestDispatcher("/jsp/myOrder.jsp").forward(request, response);
             return;
         }
     }

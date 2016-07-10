@@ -13,7 +13,7 @@ public class Orders {
     /**
      * 状态
      * <p/>
-     * 预备发货、运送中、准备收货、已完成
+     * 预备发货、运送中、准备收货、已完成、已取消
      */
     private String status;
     //商品订货数量
@@ -30,6 +30,8 @@ public class Orders {
     private double price;
     //商品在数据库中存储的第一张图片的路径
     private String path;
+    //该订单是否已付款
+    private boolean isPaid;
 
     public String getUsername() {
         return username;
@@ -47,11 +49,11 @@ public class Orders {
         this.status = status;
     }
 
-    public boolean isEvaluated() {
+    public boolean getIsEvaluated() {
         return isEvaluated;
     }
 
-    public void setEvaluated(boolean isEvaluated) {
+    public void setIsEvaluated(boolean isEvaluated) {
         this.isEvaluated = isEvaluated;
     }
 
@@ -117,5 +119,13 @@ public class Orders {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public boolean getIsPaid() {
+        return isPaid;
+    }
+
+    public void setIsPaid(boolean isPaid) {
+        this.isPaid = isPaid;
     }
 }
