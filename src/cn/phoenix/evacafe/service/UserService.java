@@ -164,4 +164,21 @@ public class UserService {
     public List<Cart> findCartByUsername(String username) {
         return userDao.findCartByUsername(username);
     }
+
+    /**
+     * 删除购物车中商品id为prodId的商品
+     * @param prodId
+     */
+    public void deleteCart(int prodId) {
+        userDao.deleteCart(prodId);
+    }
+
+    /**
+     * 通过关键字对商品进行模糊搜索
+     * @param keyword
+     * @return
+     */
+    public List<Product> searchKeyword(String keyword) {
+        return userDao.searchKeyword(keyword);
+    }
 }

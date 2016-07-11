@@ -1,5 +1,3 @@
-<%@ page import="cn.phoenix.evacafe.domain.Cart" %>
-<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: Phoenix
@@ -7,8 +5,11 @@
   Time: 10:17
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="cn.phoenix.evacafe.domain.Cart" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Checkout</title>
@@ -283,8 +284,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <td class="invert">￥${cart.price}</td>
                         <td class="invert">
                             <div class="rem">
-                                <div class="close1"></div>
+                                <div class="close1">
+                                    <a href="${pageContext.request.contextPath}/CartServlet?type=delete&prodId=${cart.productId}">
+                                        <img src="images/close_1.png">
+                                    </a>
+                                </div>
                             </div>
+                            <!--
                             <script>$(document).ready(function (c) {
                                 $('.close1').on('click', function (c) {
                                     $('.rem1').fadeOut('slow', function (c) {
@@ -293,6 +299,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 });
                             });
                             </script>
+                            -->
                         </td>
                     </tr>
                     <%i++;%>
@@ -327,11 +334,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <%--<li>Product1 <i>-</i> <span>$250.00 </span></li>--%>
                     <%--<li>Product2 <i>-</i> <span>$290.00 </span></li>--%>
                     <%--<li>Product3 <i>-</i> <span>$299.00 </span></li>--%>
-                    <li>Total <i>-</i> <span>￥${requestScope.price}</span></li>
+                    <li>Total <i>-</i> <span>￥<fmt:formatNumber type="number" value="${requestScope.price}" maxFractionDigits="3"/></span></li>
                 </ul>
             </div>
             <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
-                <a href="single.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue
+                <a href="${pageContext.request.contextPath}/index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue
                     Shopping</a>
             </div>
             <div class="clearfix"></div>

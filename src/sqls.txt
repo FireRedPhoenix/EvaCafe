@@ -19,7 +19,7 @@ productName varchar(30),
 type varchar(20),
 brand varchar(30),
 packaging varchar(30),
-level varchar(10),
+lv varchar(10),
 introduction varchar(100),
 producingArea varchar(20),
 quantity int,
@@ -86,3 +86,16 @@ SELECT pics.path,cart.nums,product.productName,product.introduction,product.pric
 FROM pics,cart,product
 WHERE pics.productId = product.productId AND product.productId = cart.productId AND cart.username = '王成'
 
+//模糊查询
+
+SELECT * FROM product
+WHERE productName like '%?%'
+OR brand like '%?%'
+OR tast like '%?%'
+
+UNION
+
+SELECT * FROM product
+WHERE lv = 'AA'
+OR type = '?'
+OR producingArea = '?'

@@ -31,22 +31,35 @@ public class CartServlet extends HttpServlet {
         }
         User user = (User) session.getAttribute("user");
         String username = user.getUsername();
-        int prodId = Integer.parseInt(request.getParameter("prodId"));
+        String type = request.getParameter("type");
 
-        //向Cart表中插入该项数据
         UserService userService = new UserService();
-        if (userService.addToCart(username, prodId)) {
-            //插入成功，查询购物车中的数据（图片地址，商品数量，商品名称，介绍，总价）
+        if (type.equals("add")) {
+            //如果是添加购物车类型
+            //向Cart表中插入该项数据
+            int prodId = Integer.parseInt(request.getParameter("prodId"));
+
+            if (userService.addToCart(username, prodId)) {
+                //插入成功，查询购物车中的数据（图片地址，商品数量，商品名称，介绍，总价）
+                List<Cart> carts = userService.findCartByUsername(username);
+                request.setAttribute("carts", carts);
+                request.getRequestDispatcher("/cart.jsp").forward(request, response);
+                return;
+            } else {
+                //插入失败
+                System.out.println("彩蛋：插入购物车失败 ");
+            }
+        } else if (type.equals("delete")) {
+            //如果类型是删除购物车的某一个商品类型
+            int prodId = Integer.parseInt(request.getParameter("prodId"));
+            //更新数据库
+            userService.deleteCart(prodId);
+            //更新cart.jsp页面
             List<Cart> carts = userService.findCartByUsername(username);
-            System.out.println(carts.size());
             request.setAttribute("carts", carts);
             request.getRequestDispatcher("/cart.jsp").forward(request, response);
-            //response.sendRedirect(request.getContextPath() + "/cart.jsp");
-            return;
-        } else {
-            //插入失败
-            System.out.println("彩蛋：插入购物车失败 ");
         }
+
 
     }
 }

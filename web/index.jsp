@@ -196,9 +196,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="logo-nav-right">
                 <div class="search-box">
                     <div id="sb-search" class="sb-search">
-                        <form>
+                        <form action="${pageContext.request.contextPath}/SearchServlet" METHOD="POST">
                             <input class="sb-search-input" placeholder="Enter your search term..." type="search"
-                                   id="search">
+                                   id="search" name="search">
                             <input class="sb-search-submit" type="submit" value="">
                             <span class="sb-icon-search"> </span>
                         </form>
@@ -428,7 +428,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                      data-wow-delay=".5s">
                     <div class="new-collections-grid1-image">
                         <a href="single.html" class="product-image"><img
-                                src="images/products/${sessionScope.hotProds[2].paths[0]}" alt=" "
+                                src="images/products/${sessionScope.hotProds[2].paths[0]}" style="width: 600px;height: 500px" alt=" "
                                 class="img-responsive"/></a>
 
                         <div class="new-collections-grid1-image-pos new-collections-grid1-image-pos1">

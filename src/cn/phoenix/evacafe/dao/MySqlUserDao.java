@@ -146,7 +146,7 @@ public class MySqlUserDao implements UserDao {
         prod.setType(resultSet.getString("type"));
         prod.setBrand(resultSet.getString("brand"));
         prod.setPackaging(resultSet.getString("packaging"));
-        prod.setLevel(resultSet.getString("level"));
+        prod.setLevel(resultSet.getString("lv"));
         prod.setIntroduction(resultSet.getString("introduction"));
         prod.setProducingArea(resultSet.getString("producingArea"));
         prod.setQuantity(resultSet.getInt("quantity"));
@@ -174,34 +174,6 @@ public class MySqlUserDao implements UserDao {
 
 
     @Override
-    public Product findProdById(int prodId) {
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        try {
-            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
-            statement = connection.prepareStatement("select * from Product,Pics where product.productId = ? and product.productId = pics.productId");
-            statement.setInt(1, prodId);
-            resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                Product prod = createProd(resultSet);
-                List<String> paths = prod.getPaths();
-                while (resultSet.next()) {
-                    paths.add(resultSet.getString("path"));
-                }
-                return prod;
-            } else {
-                return null;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        } finally {
-            DaoUtils.close(connection, statement, resultSet);
-        }
-    }
-
-    @Override
     public List<Product> findFavoriteProd(int nums) {
         String selectProds = "SELECT * FROM product,(SELECT * FROM pics GROUP BY productId) AS ppics where product.productId = ppics.productId ORDER BY good DESC LIMIT ?";
         Connection connection = null;
@@ -218,7 +190,6 @@ public class MySqlUserDao implements UserDao {
                 Product prod = createProd(resultSet);
                 prods.add(prod);
             }
-            System.out.println("sss");
             return prods;
         } catch (Exception e) {
             e.printStackTrace();
@@ -282,15 +253,9 @@ public class MySqlUserDao implements UserDao {
         }
     }
 
-    @Test
-    public void test() {
-        findCartByUsername("王成");
-        System.out.println("sss");
-    }
-
     @Override
     public List<Cart> findCartByUsername(String username) {
-        String selectSql = "SELECT ppics.path,cart.nums,product.productName,product.introduction,product.price " +
+        String selectSql = "SELECT ppics.path,cart.nums,product.productName,product.productId,product.introduction,product.price " +
                 "FROM (SELECT * FROM pics GROUP BY productId) AS ppics,cart,product " +
                 "WHERE ppics.productId = product.productId AND product.productId = cart.productId AND cart.username = ?";
 
@@ -311,9 +276,101 @@ public class MySqlUserDao implements UserDao {
                 cart.setPrice(resultSet.getInt("nums") * resultSet.getDouble("price"));
                 cart.setIntroduction(resultSet.getString("introduction"));
                 cart.setPath(resultSet.getString("path"));
+                cart.setProductId(resultSet.getInt("productId"));
                 carts.add(cart);
             }
             return carts;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(connection, statement, resultSet);
+        }
+    }
+
+    @Override
+    public void deleteCart(int prodId) {
+        String deleteSql = "DELETE FROM cart WHERE cart.productId = ?";
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement(deleteSql);
+            statement.setInt(1, prodId);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(connection, statement, null);
+        }
+
+    }
+
+    @Test
+    public void test() {
+        List<Product> s = searchKeyword("越南");
+        System.out.println("ss");
+    }
+
+    @Override
+    public List<Product> searchKeyword(String keyword) {
+        String searchSql = "SELECT * FROM (SELECT * FROM product WHERE productName like ? OR brand like ? OR tast like ? UNION SELECT * FROM product WHERE lv = ? OR type = ? OR producingArea = ?) AS pprod,pics WHERE pprod.productId = pics.productId GROUP BY pprod.productId";
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement(searchSql);
+
+            statement.setString(1, "%" + keyword + "%");
+            statement.setString(2, "%" + keyword + "%");
+            statement.setString(3, "%" + keyword + "%");
+            statement.setString(4, keyword);
+            statement.setString(5, keyword);
+            statement.setString(6, keyword);
+
+            resultSet = statement.executeQuery();
+            List<Product> prods = new ArrayList<Product>();
+
+            while (resultSet.next()) {
+                Product prod = createProd(resultSet);
+                prods.add(prod);
+            }
+            if (prods.size() == 0) {
+                return null;
+            } else {
+                return prods;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(connection, statement, resultSet);
+        }
+    }
+
+    @Override
+    public Product findProdById(int prodId) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement("select * from Product,Pics where product.productId = ? and product.productId = pics.productId");
+            statement.setInt(1, prodId);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                Product prod = createProd(resultSet);
+                List<String> paths = prod.getPaths();
+                while (resultSet.next()) {
+                    paths.add(resultSet.getString("path"));
+                }
+                return prod;
+            } else {
+                return null;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -461,7 +518,6 @@ public class MySqlUserDao implements UserDao {
 
     @Override
     public Orders findOrderById(int orderId) {
-
         String selectSql = "select Orders.isPaid,Product.productName,Orders.productId,orderId,status,productQuantity,isEvaluated,time,address,Product.price,Pics.path from Orders,Pics,Product where Orders.orderId=? and Orders.productId = Product.productId and product.productId = pics.productId";
 
         Connection connection = null;

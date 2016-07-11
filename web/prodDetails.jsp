@@ -388,7 +388,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 -->
                 <div class="occasion-cart">
                     <a class="item_add"
-                       href="${pageContext.request.contextPath}/CartServlet?prodId=${requestScope.product.productId}">加入购物车 </a>
+                       href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${requestScope.product.productId}">加入购物车 </a>
                 </div>
                 <div class="social">
                     <div class="social-left">

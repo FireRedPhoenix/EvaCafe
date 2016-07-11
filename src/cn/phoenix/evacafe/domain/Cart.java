@@ -8,11 +8,11 @@ public class Cart {
 //    private int cartId;
     //用户名，外键
 //    private String username;
-    //商品编号
-//    private int productId;
     //购物车商品的数量
 //    private int nums;
 
+    //商品编号
+    private int productId;
     //商品首张图片的路径
     private String path;
     //购物车商品的数量
@@ -62,5 +62,13 @@ public class Cart {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 }

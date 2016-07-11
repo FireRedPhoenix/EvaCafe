@@ -58,4 +58,13 @@
         <url-pattern>/CartServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>cn.phoenix.evacafe.web.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/SearchServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -117,4 +117,17 @@ public interface UserDao {
      * @return
      */
     List<Cart> findCartByUsername(String username);
+
+    /**
+     * 删除购物车中商品id为prodId的商品
+     * @param prodId
+     */
+    void deleteCart(int prodId);
+
+    /**
+     * 通过关键字对商品进行模糊搜索
+     * @param keyword
+     * @return
+     */
+    List<Product> searchKeyword(String keyword);
 }
