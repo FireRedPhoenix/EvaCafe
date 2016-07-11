@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
     <servlet>
         <servlet-name>LogInOutServlet</servlet-name>
         <servlet-class>cn.phoenix.evacafe.web.LogInOutServlet</servlet-class>
@@ -45,7 +46,16 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ProdDetailsServlet</servlet-name>
-        <url-pattern>/servlet/ProdDetailsServlet</url-pattern>
+        <url-pattern>/ProdDetailsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>cn.phoenix.evacafe.web.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/CartServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -1,5 +1,6 @@
 package cn.phoenix.evacafe.dao;
 
+import cn.phoenix.evacafe.domain.Cart;
 import cn.phoenix.evacafe.domain.Orders;
 import cn.phoenix.evacafe.domain.Product;
 import cn.phoenix.evacafe.domain.User;
@@ -171,11 +172,6 @@ public class MySqlUserDao implements UserDao {
         return prod;
     }
 
-    @Test
-    public void test() {
-        findProdById(1);
-    }
-
 
     @Override
     public Product findProdById(int prodId) {
@@ -197,6 +193,127 @@ public class MySqlUserDao implements UserDao {
             } else {
                 return null;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(connection, statement, resultSet);
+        }
+    }
+
+    @Override
+    public List<Product> findFavoriteProd(int nums) {
+        String selectProds = "SELECT * FROM product,(SELECT * FROM pics GROUP BY productId) AS ppics where product.productId = ppics.productId ORDER BY good DESC LIMIT ?";
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement(selectProds);
+            statement.setInt(1, nums);
+            resultSet = statement.executeQuery();
+            List<Product> prods = new ArrayList<Product>();
+            while (resultSet.next()) {
+                Product prod = createProd(resultSet);
+                prods.add(prod);
+            }
+            System.out.println("sss");
+            return prods;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(connection, statement, resultSet);
+        }
+    }
+
+    @Override
+    public boolean addToCart(String username, int prodId) {
+        String querySql = "SELECT * FROM cart WHERE username = ? AND productId = ?";
+        String addSql = "INSERT INTO cart VALUES(NULL,?,?,1);";
+        String updateSql = "UPDATE cart SET nums=? WHERE productId=?";
+        Connection connection = null;
+        PreparedStatement statement = null;
+        PreparedStatement statement1 = null;
+        PreparedStatement statement2 = null;
+        ResultSet resultSet = null;
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement(querySql);
+            statement.setString(1, username);
+            statement.setInt(2, prodId);
+            resultSet = statement.executeQuery();
+            if (!resultSet.next()) {
+                //该商品尚未添加购物车
+                statement1 = connection.prepareStatement(addSql);
+                statement1.setString(1, username);
+                statement1.setInt(2, prodId);
+                int i = statement1.executeUpdate();
+                System.out.println(i);
+
+                if (i > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                //该商品已经添加购物车，则将购物车中的数量+1
+                //获取商品的原有数量nums
+                int nums = resultSet.getInt("nums");
+                nums++;
+                statement2 = connection.prepareStatement(updateSql);
+                statement2.setInt(1, nums);
+                statement2.setInt(2, prodId);
+                int rows = statement2.executeUpdate();
+                if (rows > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(null, statement, resultSet);
+            DaoUtils.close(connection, statement1, null);
+            DaoUtils.close(null, statement2, null);
+        }
+    }
+
+    @Test
+    public void test() {
+        findCartByUsername("王成");
+        System.out.println("sss");
+    }
+
+    @Override
+    public List<Cart> findCartByUsername(String username) {
+        String selectSql = "SELECT ppics.path,cart.nums,product.productName,product.introduction,product.price " +
+                "FROM (SELECT * FROM pics GROUP BY productId) AS ppics,cart,product " +
+                "WHERE ppics.productId = product.productId AND product.productId = cart.productId AND cart.username = ?";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement(selectSql);
+            statement.setString(1, username);
+            resultSet = statement.executeQuery();
+            List<Cart> carts = new ArrayList<Cart>();
+            while (resultSet.next()) {
+                Cart cart = new Cart();
+                cart.setProductName(resultSet.getString("productName"));
+                cart.setNums(resultSet.getInt("nums"));
+                cart.setPrice(resultSet.getInt("nums") * resultSet.getDouble("price"));
+                cart.setIntroduction(resultSet.getString("introduction"));
+                cart.setPath(resultSet.getString("path"));
+                carts.add(cart);
+            }
+            return carts;
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -250,8 +367,8 @@ public class MySqlUserDao implements UserDao {
     }
 
     @Override
-    public User addUser(String username, String password, String phoneNumber) {
-        String insertSql = "insert into user values (?,?,?,?,?,?,?)";
+    public User addUser(String username, String password, String phoneNumber, String email) {
+        String insertSql = "insert into user values (?,?,?,?,?,?,?,?)";
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -272,6 +389,8 @@ public class MySqlUserDao implements UserDao {
             statement.setInt(6, 0);
             //电话号码
             statement.setString(7, phoneNumber);
+            //邮箱
+            statement.setString(8, email);
             int rows = statement.executeUpdate();
             if (rows == 0) {
                 return null;

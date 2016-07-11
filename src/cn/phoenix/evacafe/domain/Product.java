@@ -1,5 +1,6 @@
 package cn.phoenix.evacafe.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**

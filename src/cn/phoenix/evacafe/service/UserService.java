@@ -1,6 +1,7 @@
 package cn.phoenix.evacafe.service;
 
 import cn.phoenix.evacafe.dao.UserDao;
+import cn.phoenix.evacafe.domain.Cart;
 import cn.phoenix.evacafe.domain.Orders;
 import cn.phoenix.evacafe.domain.Product;
 import cn.phoenix.evacafe.domain.User;
@@ -33,8 +34,8 @@ public class UserService {
      * @param phoneNumber 电话
      * @return 返回注册的用户对象，若用户名已注册，则返回null
      */
-    public User userRegister(String username, String password, String phoneNumber) {
-        return userDao.addUser(username, password, phoneNumber);
+    public User userRegister(String username, String password, String phoneNumber, String email) {
+        return userDao.addUser(username, password, phoneNumber, email);
     }
 
     /**
@@ -138,5 +139,29 @@ public class UserService {
      */
     public Product findProdById(int prodId) {
         return userDao.findProdById(prodId);
+    }
+
+    /**
+     * 找出好评数前nums的产品
+     *
+     * @param nums
+     * @return
+     */
+    public List<Product> findFavoriteProd(int nums) {
+        return userDao.findFavoriteProd(nums);
+    }
+
+    /**
+     * 将id为prodId的商品添加到用户username的购物车中
+     * @param username
+     * @param prodId
+     * @return 若添加成功则返回true，否则返回false
+     */
+    public boolean addToCart(String username, int prodId) {
+        return userDao.addToCart(username,prodId);
+    }
+
+    public List<Cart> findCartByUsername(String username) {
+        return userDao.findCartByUsername(username);
     }
 }

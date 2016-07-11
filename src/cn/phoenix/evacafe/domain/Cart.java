@@ -5,33 +5,62 @@ package cn.phoenix.evacafe.domain;
  */
 public class Cart {
     //主键
-    private int cartId;
+//    private int cartId;
     //用户名，外键
-    private String username;
+//    private String username;
     //商品编号
-    private int productId;
+//    private int productId;
+    //购物车商品的数量
+//    private int nums;
 
-    public String getUsername() {
-        return username;
+    //商品首张图片的路径
+    private String path;
+    //购物车商品的数量
+    private int nums;
+    //商品的名称
+    private String productName;
+    //商品的介绍
+    private String introduction;
+    //商品的总价
+    private double price;
+
+    public String getPath() {
+        return path;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPath(String path) {
+        this.path = path;
     }
 
-    public int getProductId() {
-        return productId;
+    public int getNums() {
+        return nums;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setNums(int nums) {
+        this.nums = nums;
     }
 
-    public int getCartId() {
-        return cartId;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setCartId(int cartId) {
-        this.cartId = cartId;
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

@@ -23,21 +23,24 @@ public class RegisterServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        /*
         Iterator<Map.Entry<String, String[]>> iterator = request.getParameterMap().entrySet().iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next().getKey() + ":" + iterator.next().getValue());
         }
+        */
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String password2 = request.getParameter("password2");
         String phoneNumber = request.getParameter("phoneNumber");
+        String email = request.getParameter("email");
 
         if (!password.equals(password2)) {
             request.setAttribute("msg", "输入密码不一致");
             request.getRequestDispatcher("/register.jsp").forward(request, response);
         } else {
             UserService userService = new UserService();
-            User user = userService.userRegister(username, password, phoneNumber);
+            User user = userService.userRegister(username, password, phoneNumber, email);
             if (user == null) {
                 request.setAttribute("msg", "用户名已存在");
                 request.getRequestDispatcher("/register.jsp").forward(request, response);

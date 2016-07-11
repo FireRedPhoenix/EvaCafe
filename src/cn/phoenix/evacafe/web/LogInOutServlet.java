@@ -31,7 +31,6 @@ public class LogInOutServlet extends HttpServlet {
         if (type.equals("enterLogin")) {
             response.sendRedirect(request.getContextPath() + "/login.jsp");
         } else if (type.equals("login")) {
-
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 

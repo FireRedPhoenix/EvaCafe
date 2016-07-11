@@ -1,5 +1,6 @@
 package cn.phoenix.evacafe.dao;
 
+import cn.phoenix.evacafe.domain.Cart;
 import cn.phoenix.evacafe.domain.Orders;
 import cn.phoenix.evacafe.domain.Product;
 import cn.phoenix.evacafe.domain.User;
@@ -35,7 +36,7 @@ public interface UserDao {
      * @param phoneNumber 手机号码
      * @return 返回注册完成的用户对象，如果注册失败则返回空
      */
-    public User addUser(String username, String password, String phoneNumber);
+    public User addUser(String username, String password, String phoneNumber,String email);
 
     /**
      * 通过用户名寻找用户的订单
@@ -94,4 +95,26 @@ public interface UserDao {
      * @return
      */
     Product findProdById(int prodId);
+
+    /**
+     * 找出好评数前nums的产品
+     * @param nums
+     * @return 返回查询到的产品
+     */
+    List<Product> findFavoriteProd(int nums);
+
+    /**
+     * 将id为prodId的商品添加到用户username的购物车中
+     * @param username
+     * @param prodId
+     * @return 若添加成功则返回true，否则返回false
+     */
+    boolean addToCart(String username, int prodId);
+
+    /**
+     * 通过用户名来寻找该用户的购物车商品
+     * @param username
+     * @return
+     */
+    List<Cart> findCartByUsername(String username);
 }

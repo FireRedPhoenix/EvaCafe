@@ -44,7 +44,8 @@ bad int not null
 create table cart(
 cartId int primary key auto_increment,
 username varchar(20),
-productId int,
+productId int unique,
+nums int,
 foreign key(username) references User(username)
 )
 
@@ -80,4 +81,8 @@ insert into Cart values (null,'王成',1);
 
 select Orders.isPaid,Product.productName,Orders.productId,orderId,status,productQuantity,isEvaluated,time,address,Product.price,Pics.path from Orders,Pics,Product where Orders.username='王成' and Orders.productId = Product.productId and product.productId = pics.productId;
 update Orders set status='预备发送' where orderId=1
+
+SELECT pics.path,cart.nums,product.productName,product.introduction,product.price
+FROM pics,cart,product
+WHERE pics.productId = product.productId AND product.productId = cart.productId AND cart.username = '王成'
 
