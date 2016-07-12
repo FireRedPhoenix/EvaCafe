@@ -1,9 +1,6 @@
 package cn.phoenix.evacafe.dao;
 
-import cn.phoenix.evacafe.domain.Cart;
-import cn.phoenix.evacafe.domain.Orders;
-import cn.phoenix.evacafe.domain.Product;
-import cn.phoenix.evacafe.domain.User;
+import cn.phoenix.evacafe.domain.*;
 
 import java.util.List;
 
@@ -163,4 +160,19 @@ public interface UserDao {
      * @param address
      */
     void addOrder(String username, int prodId, int nums, String address);
+
+    /**
+     * 通过商品的Id获得该商品的评论
+     * @param productId
+     * @return 返回对该商品的所有评论
+     */
+    List<Review> findReviewByProdId(int productId);
+
+    /**
+     * 向review表中插入用户对商品的评论
+     * @param username
+     * @param prodId
+     * @param reviewMsg
+     */
+    void userReview(String username, int prodId, String reviewMsg);
 }

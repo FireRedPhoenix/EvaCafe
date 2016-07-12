@@ -484,17 +484,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                   data-toggle="tab" aria-controls="home"
                                                                   aria-expanded="true">简介</a></li>
                         <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab"
-                                                   aria-controls="profile">Reviews(2)</a></li>
-                        <%--<li role="presentation" class="dropdown">--%>
-                            <%--<a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown"--%>
-                               <%--aria-controls="myTabDrop1-contents">Information <span class="caret"></span></a>--%>
-                            <%--<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">--%>
-                                <%--<li><a href="#dropdown1" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab"--%>
-                                       <%--aria-controls="dropdown1">cleanse</a></li>--%>
-                                <%--<li><a href="#dropdown2" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab"--%>
-                                       <%--aria-controls="dropdown2">fanny</a></li>--%>
-                            <%--</ul>--%>
-                        <%--</li>--%>
+                                                   aria-controls="profile">评论(${requestScope.reviews.size()})</a>
+                        </li>
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home"
@@ -503,59 +494,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                             <p>${requestScope.product.introduction}</p>
                         </div>
+
                         <div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile"
                              aria-labelledby="profile-tab">
                             <div class="bootstrap-tab-text-grids">
-                                <div class="bootstrap-tab-text-grid">
-                                    <div class="bootstrap-tab-text-grid-left">
-                                        <img src="images/4.png" alt=" " class="img-responsive"/>
-                                    </div>
-                                    <div class="bootstrap-tab-text-grid-right">
-                                        <ul>
-                                            <li><a href="#">Admin</a></li>
-                                            <li><a href="#"><span class="glyphicon glyphicon-share"
-                                                                  aria-hidden="true"></span>Reply</a></li>
-                                        </ul>
-                                        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-                                            suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
-                                            vel eum iure reprehenderit.</p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="bootstrap-tab-text-grid">
-                                    <div class="bootstrap-tab-text-grid-left">
+
+                                <c:forEach items="${requestScope.reviews}" var="review">
+                                    <div style="margin-bottom: 20px;" class="bootstrap-tab-text-grid-left">
                                         <img src="images/5.png" alt=" " class="img-responsive"/>
                                     </div>
-                                    <div class="bootstrap-tab-text-grid-right">
+                                    <div style="margin-bottom: 20px;" class="bootstrap-tab-text-grid-right">
                                         <ul>
-                                            <li><a href="#">Admin</a></li>
+                                            <li><a href="#">${review.username}</a></li>
                                             <li><a href="#"><span class="glyphicon glyphicon-share"
                                                                   aria-hidden="true"></span>Reply</a></li>
                                         </ul>
-                                        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-                                            suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
-                                            vel eum iure reprehenderit.</p>
+                                        <p>${review.rview}</p>
                                     </div>
                                     <div class="clearfix"></div>
-                                </div>
-                                <div class="add-review">
-                                    <h4>add a review</h4>
+                                </c:forEach>
 
-                                    <form>
-                                        <input type="text" value="Name" onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Name';}" required="">
-                                        <input type="email" value="Email" onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                                        <input type="text" value="Subject" onfocus="this.value = '';"
-                                               onblur="if (this.value == '') {this.value = 'Subject';}" required="">
+                                <div class="add-review">
+                                    <h4>添加评论</h4>
+                                    <font color="red">${requestScope.reviewMsg}</font>
+
+                                    <form method="POST" action="${pageContext.request.contextPath}/ReviewServlet?prodId=${requestScope.product.productId}">
+                                        <%--<input type="text" value="Name" onfocus="this.value = '';"--%>
+                                        <%--onblur="if (this.value == '') {this.value = 'Name';}" required="">--%>
+                                        <%--<input type="email" value="Email" onfocus="this.value = '';"--%>
+                                        <%--onblur="if (this.value == '') {this.value = 'Email';}" required="">--%>
+                                        <%--<input type="text" value="Subject" onfocus="this.value = '';"--%>
+                                        <%--onblur="if (this.value == '') {this.value = 'Subject';}" required="">--%>
                                         <textarea type="text" onfocus="this.value = '';"
-                                                  onblur="if (this.value == '') {this.value = 'Message...';}"
-                                                  required="">Message...</textarea>
-                                        <input type="submit" value="Send">
+                                        <%--onblur="if (this.value == '') {this.value = 'Message...';}"--%>
+                                                  name="reviewMsg"></textarea>
+                                        <input type="submit" value="发送">
                                     </form>
                                 </div>
                             </div>
                         </div>
+
+
                         <div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="dropdown1"
                              aria-labelledby="dropdown1-tab">
                             <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's
@@ -582,185 +561,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="clearfix"></div>
     </div>
 </div>
-<!-- //single -->
-<!-- single-related-products -->
-<%--<div class="single-related-products">--%>
-<%--<div class="container">--%>
-<%--<h3 class="animated wow slideInUp" data-wow-delay=".5s">Related Products</h3>--%>
-
-<%--<p class="est animated wow slideInUp" data-wow-delay=".5s">Excepteur sint occaecat cupidatat non proident, sunt--%>
-<%--in culpa qui officia--%>
-<%--deserunt mollit anim id est laborum.</p>--%>
-
-<%--<div class="new-collections-grids">--%>
-<%--<div class="col-md-3 new-collections-grid">--%>
-<%--<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".5s">--%>
-<%--<div class="new-collections-grid1-image">--%>
-<%--<a href="single.html" class="product-image"><img src="images/8.jpg" alt=" "--%>
-<%--class="img-responsive"></a>--%>
-
-<%--<div class="new-collections-grid1-image-pos">--%>
-<%--<a href="single.html">Quick View</a>--%>
-<%--</div>--%>
-<%--<div class="new-collections-grid1-right">--%>
-<%--<div class="rating">--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/1.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/1.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/1.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="clearfix"></div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<h4><a href="single.html">Running Shoes</a></h4>--%>
-
-<%--<p>Vel illum qui dolorem eum fugiat.</p>--%>
-
-<%--<div class="new-collections-grid1-left simpleCart_shelfItem">--%>
-<%--<p><i>$280</i> <span class="item_price">$150</span><a class="item_add" href="#">加入购物车 </a>--%>
-<%--</p>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<div class="col-md-6 new-collections-grid">--%>
-<%--<div class="new-collections-grid1-sub">--%>
-<%--<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".6s">--%>
-<%--<div class="new-collections-grid1-image">--%>
-<%--<a href="single.html" class="product-image"><img src="images/6.jpg" alt=" "--%>
-<%--class="img-responsive"></a>--%>
-
-<%--<div class="new-collections-grid1-image-pos">--%>
-<%--<a href="single.html">Quick View</a>--%>
-<%--</div>--%>
-<%--<div class="new-collections-grid1-right">--%>
-<%--<div class="rating">--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="clearfix"></div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<h4><a href="single.html">Wall Lamp</a></h4>--%>
-
-<%--<p>Vel illum qui dolorem eum fugiat.</p>--%>
-
-<%--<div class="new-collections-grid1-left simpleCart_shelfItem">--%>
-<%--<p><i>$480</i> <span class="item_price">$400</span><a class="item_add" href="#">add to--%>
-<%--cart </a></p>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<div class="new-collections-grid1-sub">--%>
-<%--<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".7s">--%>
-<%--<div class="new-collections-grid1-image">--%>
-<%--<a href="single.html" class="product-image"><img src="images/9.jpg" alt=" "--%>
-<%--class="img-responsive"></a>--%>
-
-<%--<div class="new-collections-grid1-image-pos">--%>
-<%--<a href="single.html">Quick View</a>--%>
-<%--</div>--%>
-<%--<div class="new-collections-grid1-right">--%>
-<%--<div class="rating">--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/1.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/1.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/1.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/1.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="clearfix"></div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<h4><a href="single.html">Wall Lamp</a></h4>--%>
-
-<%--<p>Vel illum qui dolorem eum fugiat.</p>--%>
-
-<%--<div class="new-collections-grid1-left simpleCart_shelfItem">--%>
-<%--<p><i>$280</i> <span class="item_price">$150</span><a class="item_add" href="#">add to--%>
-<%--cart </a></p>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<div class="clearfix"></div>--%>
-<%--</div>--%>
-<%--<div class="col-md-3 new-collections-grid">--%>
-<%--<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".8s">--%>
-<%--<div class="new-collections-grid1-image">--%>
-<%--<a href="single.html" class="product-image"><img src="images/11.jpg" alt=" "--%>
-<%--class="img-responsive"></a>--%>
-
-<%--<div class="new-collections-grid1-image-pos">--%>
-<%--<a href="single.html">Quick View</a>--%>
-<%--</div>--%>
-<%--<div class="new-collections-grid1-right">--%>
-<%--<div class="rating">--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/2.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="rating-left">--%>
-<%--<img src="images/1.png" alt=" " class="img-responsive">--%>
-<%--</div>--%>
-<%--<div class="clearfix"></div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<h4><a href="single.html">Stones Bangles</a></h4>--%>
-
-<%--<p>Vel illum qui dolorem eum fugiat.</p>--%>
-
-<%--<div class="new-collections-grid1-left simpleCart_shelfItem">--%>
-<%--<p><i>$340</i> <span class="item_price">$257</span><a class="item_add" href="#">加入购物车 </a>--%>
-<%--</p>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<div class="clearfix"></div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<!-- //single-related-products -->
 <!-- footer -->
 <div class="footer">
     <div class="container">

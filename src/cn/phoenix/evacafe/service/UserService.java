@@ -1,10 +1,7 @@
 package cn.phoenix.evacafe.service;
 
 import cn.phoenix.evacafe.dao.UserDao;
-import cn.phoenix.evacafe.domain.Cart;
-import cn.phoenix.evacafe.domain.Orders;
-import cn.phoenix.evacafe.domain.Product;
-import cn.phoenix.evacafe.domain.User;
+import cn.phoenix.evacafe.domain.*;
 import cn.phoenix.evacafe.factory.DaoFactory;
 
 import java.util.List;
@@ -213,5 +210,18 @@ public class UserService {
      */
     public void addOrder(String username, int prodId, int nums, String address) {
         userDao.addOrder(username, prodId, nums, address);
+    }
+
+    /**
+     * 通过商品的Id获得该商品的评论
+     * @param productId
+     * @return 返回对该商品的所有评论
+     */
+    public List<Review> findReviewByProdId(int productId) {
+        return userDao.findReviewByProdId(productId);
+    }
+
+    public void userReview(String username, int prodId, String reviewMsg) {
+        userDao.userReview(username,prodId,reviewMsg);
     }
 }

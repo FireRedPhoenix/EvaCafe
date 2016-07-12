@@ -1,9 +1,6 @@
 package cn.phoenix.evacafe.dao;
 
-import cn.phoenix.evacafe.domain.Cart;
-import cn.phoenix.evacafe.domain.Orders;
-import cn.phoenix.evacafe.domain.Product;
-import cn.phoenix.evacafe.domain.User;
+import cn.phoenix.evacafe.domain.*;
 import cn.phoenix.evacafe.util.ConfigUtils;
 import cn.phoenix.evacafe.util.DaoUtils;
 import cn.phoenix.evacafe.util.Tools;
@@ -482,6 +479,74 @@ public class MySqlUserDao implements UserDao {
             statement.setString(4, Tools.getTime());
             statement.setString(5, address);
             statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(connection, statement, resultSet);
+        }
+    }
+
+    @Override
+    public List<Review> findReviewByProdId(int productId) {
+        String selectSql = "SELECT * FROM review WHERE productId = ?";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement(selectSql);
+            statement.setInt(1, productId);
+            resultSet = statement.executeQuery();
+
+            List<Review> reviews = new ArrayList<Review>();
+            Review review = null;
+            while (resultSet.next()) {
+                review = new Review();
+                review.setProductId(resultSet.getInt("rId"));
+                review.setRview(resultSet.getString("rview"));
+                review.setProductId(resultSet.getInt("productId"));
+                review.setUsername(resultSet.getString("username"));
+                reviews.add(review);
+            }
+            if (reviews.size() == 0) {
+                return null;
+            } else {
+                return reviews;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(connection, statement, resultSet);
+        }
+    }
+
+    @Test
+    public void test2() {
+        List<Review> reviewByProdId = findReviewByProdId(7);
+        System.out.println("ssss");
+    }
+
+
+    @Override
+    public void userReview(String username, int prodId, String reviewMsg) {
+        String insertSql = "INSERT INTO review VALUES(NULL,?,?,?)";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement(insertSql);
+            statement.setString(1, reviewMsg);
+            statement.setInt(2, prodId);
+            statement.setString(3, username);
+            statement.executeUpdate();
+
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
