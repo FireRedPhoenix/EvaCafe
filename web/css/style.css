@@ -1775,7 +1775,7 @@ ul.wmuSliderPagination {
 	margin:.5em 0 1em;
 }
 .description{
-	margin:2em 0;
+	margin:0.5em 0;
 }
 .description h5{
 	color:#212121;
@@ -1785,8 +1785,10 @@ ul.wmuSliderPagination {
 .description p{
 	font-size:14px;
 	color:#999;
-	line-height:1.8em;
-	margin:0.5em 0 0;
+	/*line-height:1.8em;*/
+	line-height:1.0em;
+	/*margin:0.5em 0 0;*/
+	margin:0.2em 0 0;
 }
 .color-quality-left{
 	float:left;

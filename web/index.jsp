@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Home</title>
+    <title>咖啡时光</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -60,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
                 <ul>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">347861304@qq.com</a></li>
+                            href="mailto:347861304@qq.com">347861304@qq.com</a></li>
                     <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+159 2711 4610</li>
                     <c:if test="${sessionScope.user != null}">
                         <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>${sessionScope.user.username}
@@ -89,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="logo-nav">
             <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-                <h1><a href="index.jsp">最好的咖啡屋<span> 欣赏,随心所欲</span></a></h1>
+                <h1><a href="index.jsp">咖啡时光<span> 品味,随心所欲</span></a></h1>
             </div>
             <div class="logo-nav-left1">
                 <nav class="navbar navbar-default">
@@ -105,7 +105,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#" class="act">主页</a></li>
+                            <li class="active"><a href="index.jsp" class="act">主页</a></li>
                             <!-- Mega Menu -->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">咖啡<b
@@ -114,34 +114,62 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <h6>Men's Wear</h6>
-                                                <li><a href="products.html">Clothing</a></li>
-                                                <li><a href="products.html">Wallets</a></li>
-                                                <li><a href="products.html">Shoes</a></li>
-                                                <li><a href="products.html">Watches</a></li>
-                                                <li><a href="products.html">Accessories</a></li>
+                                                <h6>品牌</h6>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=雀巢&page=0">雀巢</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=麦斯威尔&page=0">麦斯威尔</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=中原&page=0">中原</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=意利&page=0">意利</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=吉意欧&page=0">吉意欧</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=星巴克&page=0">星巴克</a>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <h6>Women's Wear</h6>
-                                                <li><a href="products.html">Clothing</a></li>
-                                                <li><a href="products.html">Wallets,Bags</a></li>
-                                                <li><a href="products.html">Footwear</a></li>
-                                                <li><a href="products.html">Watches</a></li>
-                                                <li><a href="products.html">Accessories</a></li>
-                                                <li><a href="products.html">Jewellery</a></li>
-                                                <li><a href="products.html">Beauty & Grooming</a></li>
+                                                <h6>口味</h6>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=狂野&page=0">狂野</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=清香&page=0">清香</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=浓烈&page=0">浓烈</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=芳香&page=0">芳香</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=香甜&page=0">香甜</a>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <h6>Kid's Wear</h6>
-                                                <li><a href="products.html">Kids Home Fashion</a></li>
-                                                <li><a href="products.html">Boy's Clothing</a></li>
-                                                <li><a href="products.html">Girl's Clothing</a></li>
-                                                <li><a href="products.html">Shoes</a></li>
-                                                <li><a href="products.html">Brand Stores</a></li>
+                                                <h6>品质</h6>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=AA&page=0">AA级</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=A&page=0">A级</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=B&page=0">B级</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=C&page=0">C级</a>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -149,45 +177,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Furniture <b
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">周边 <b
                                         class="caret"></b></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <h6>Home Collection</h6>
-                                                <li><a href="furniture.html">Cookware</a></li>
-                                                <li><a href="furniture.html">Sofas</a></li>
-                                                <li><a href="furniture.html">Dining Tables</a></li>
-                                                <li><a href="furniture.html">Shoe Racks</a></li>
-                                                <li><a href="furniture.html">Home Decor</a></li>
+                                                <h6>咖啡机</h6>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=德龙&page=0">德龙</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=东菱&page=0">东菱</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=九阳&page=0">九阳</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=美乐家&page=0">美乐家</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=飞利浦&page=0">飞利浦</a>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <h6>Office Collection</h6>
-                                                <li><a href="furniture.html">Carpets</a></li>
-                                                <li><a href="furniture.html">Tables</a></li>
-                                                <li><a href="furniture.html">Sofas</a></li>
-                                                <li><a href="furniture.html">Shoe Racks</a></li>
-                                                <li><a href="furniture.html">Sockets</a></li>
-                                                <li><a href="furniture.html">Electrical Machines</a></li>
+                                                <h6>咖啡杯</h6>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=陶瓷/马克杯&page=0">陶瓷/马克杯</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=玻璃杯&page=0">玻璃杯</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=保温杯&page=0">保温杯</a>
+                                                </li>
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=塑料杯&page=0">塑料杯</a>
+                                                </li>
                                             </ul>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <h6>Decorations</h6>
-                                                <li><a href="furniture.html">Toys</a></li>
-                                                <li><a href="furniture.html">Wall Clock</a></li>
-                                                <li><a href="furniture.html">Lighting</a></li>
-                                                <li><a href="furniture.html">Top Brands</a></li>
-                                            </ul>
-                                        </div>
+                                        <%--<div class="col-sm-4">--%>
+                                        <%--<ul class="multi-column-dropdown">--%>
+                                        <%--<h6>Decorations</h6>--%>
+                                        <%--<li><a href="furniture.html">Toys</a></li>--%>
+                                        <%--<li><a href="furniture.html">Wall Clock</a></li>--%>
+                                        <%--<li><a href="furniture.html">Lighting</a></li>--%>
+                                        <%--<li><a href="furniture.html">Top Brands</a></li>--%>
+                                        <%--</ul>--%>
+                                        <%--</div>--%>
                                         <div class="clearfix"></div>
                                     </div>
                                 </ul>
                             </li>
-                            <li><a href="short-codes.html">Short Codes</a></li>
                             <li><a href="mail.html">联系我们</a></li>
                         </ul>
                     </div>
@@ -198,7 +241,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div id="sb-search" class="sb-search">
                         <form action="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&page=0"
                               METHOD="POST">
-                            <input class="sb-search-input" placeholder="Enter your search term..." type="search"
+                            <input class="sb-search-input" placeholder="输入你想查找的..." type="search"
                                    id="search" name="search">
                             <input class="sb-search-submit" type="submit" value="">
                             <span class="sb-icon-search"> </span>
@@ -216,14 +259,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="header-right">
                 <div class="cart box_1">
                     <a href="${pageContext.request.contextPath}/CartServlet?type=view">
-                        <h3>
-                            <%--
-                            <div class="total">
-                                <span class="simpleCart_total"></span> (<span id="simpleCart_quantity"
-                                                                              class="simpleCart_quantity"></span> items)
-                            </div>
-                            --%>我的购物车
-                        </h3>
+                        <h3>我的购物车</h3>
                     </a>
                     <a href="${pageContext.request.contextPath}/OrderServlet">
                         <h3>我的订单</h3>
@@ -241,7 +277,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="banner">
     <div class="container">
         <div class="banner-info animated wow zoomIn" data-wow-delay=".5s">
-            <h3>自由的在线购物商店</h3>
+            <h3>高品质的在线咖啡商店</h3>
             <h4>高达 <span>40% <i>减价/-</i></span></h4>
 
             <div class="wmuSlider example1">
@@ -758,7 +794,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"></div>
         </div>
         <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-            <h2><a href="index.html">最好的咖啡屋<span>shop anywhere</span></a></h2>
+            <h2><a href="index.jsp">咖啡时光<span>品味，随心所欲</span></a></h2>
         </div>
         <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
             <p>Copyright &copy; 2016.Best Store All rights reserved.

@@ -72,6 +72,18 @@ productId int,
 foreign key(productId) references Product(productId)
 )
 
+//创建Review表
+CREATE TABLE Review(
+rId int PRIMARY KEY AUTO_INCREMENT,
+rview VARCHAR(1000) NOT NULL,
+productId int,
+username VARCHAR(20),
+FOREIGN KEY(productId) REFERENCES Product(productId),
+FOREIGN KEY(username) REFERENCES User(username)
+)
+
+新华社快讯：菲律宾南海仲裁案仲裁庭12日作出非法无效的所谓最终裁决。对此，中方多次声明，菲律宾共和国阿基诺三世政府单方面提起仲裁违背国际法，仲裁庭没有管辖权，中国不接受，不承认。
+
 insert into Product values(null,'中原G7三合一速溶咖啡','咖啡粉','中原','袋装','AA','地处热带季风区的越南是好咖啡的出产地，浓香造就了越南咖啡','越南',7261,62.8,'狂野',null,null,null,null,null,null,null,null,null,null,23,2,5);
 insert into Product values(null,'Nestle雀巢咖啡','成品','雀巢','null','A','随时沉醉在香浓的咖啡中，如身临咖啡馆','中国大陆',522,61.8,'清香','大','脂状',null,null,null,'高糖',0,'桂圆',null,null,49,1,10);
 insert into Pics values (null,'未可知',1);
