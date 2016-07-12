@@ -148,6 +148,7 @@ public interface UserDao {
 
     /**
      * 搜索最新的前rows行商品
+     *
      * @param rows
      * @return
      */
@@ -155,8 +156,11 @@ public interface UserDao {
 
     /**
      * 添加订单
+     *
      * @param username
      * @param prodId
+     * @param nums
+     * @param address
      */
-    void addOrder(String username, int prodId);
+    void addOrder(String username, int prodId, int nums, String address);
 }

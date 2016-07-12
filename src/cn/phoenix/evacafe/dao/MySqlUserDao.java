@@ -6,10 +6,12 @@ import cn.phoenix.evacafe.domain.Product;
 import cn.phoenix.evacafe.domain.User;
 import cn.phoenix.evacafe.util.ConfigUtils;
 import cn.phoenix.evacafe.util.DaoUtils;
+import cn.phoenix.evacafe.util.Tools;
 import org.junit.Test;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -449,35 +451,43 @@ public class MySqlUserDao implements UserDao {
         }
     }
 
-    @Override
-    public void addOrder(String username, int prodId) {
-//        INSERT INTO orders values (NULL,'王成',7,'预备发货',1,0,'2016-7-10 10:33','武汉',0)
-        String querySql = "SELECT * FROM orders WHERE username=? AND prodId=?";
+    @Test
+    public void test1() {
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int year = calendar.get(Calendar.YEAR);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        //calendar.get(Calendar.YEAR);
+        //calendar.get(Calendar.YEAR);
+        System.out.println(year + ":" + month + ":" + day + ":" + hour + ":" + minute);
+    }
 
+    @Override
+    public void addOrder(String username, int prodId, int nums, String address) {
+//        orderId,username,productId,status,productQuantity,isEvaluated,time,address,isPaid
+        String insertSql = "INSERT INTO orders VALUES (NULL,?,?,'预备发货',?,0,?,?,0)";
         Connection connection = null;
         PreparedStatement statement = null;
+        PreparedStatement statement1 = null;
         ResultSet resultSet = null;
-/*
+
         try {
             connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
-            statement = connection.prepareStatement(querySql);
-            statement.setInt(1, rows);
-            resultSet = statement.executeQuery();
-
-            List<Product> prods = new ArrayList<Product>();
-            while (resultSet.next()) {
-                Product prod = createProd(resultSet);
-                prods.add(prod);
-            }
-            return prods;
+            statement = connection.prepareStatement(insertSql);
+            statement.setString(1, username);
+            statement.setInt(2, prodId);
+            statement.setInt(3, nums);
+            statement.setString(4, Tools.getTime());
+            statement.setString(5, address);
+            statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         } finally {
             DaoUtils.close(connection, statement, resultSet);
         }
-*/
-
     }
 
     @Override

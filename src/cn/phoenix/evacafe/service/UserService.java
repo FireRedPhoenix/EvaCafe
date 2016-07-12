@@ -207,10 +207,11 @@ public class UserService {
 
     /**
      * 添加订单
+     *
      * @param username
      * @param prodId
      */
-    public void addOrder(String username, int prodId) {
-        userDao.addOrder(username,prodId);
+    public void addOrder(String username, int prodId, int nums, String address) {
+        userDao.addOrder(username, prodId, nums, address);
     }
 }

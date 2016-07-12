@@ -348,48 +348,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <p>${requestScope.product.introduction}</p>
                 </div>
                 <div class="color-quality">
-                    <!--
-                    <div class="color-quality-left">
-                        <h5>Color : </h5>
-                        <ul>
-                            <li><a href="#"><span></span>Red</a></li>
-                            <li><a href="#" class="brown"><span></span>Yellow</a></li>
-                            <li><a href="#" class="purple"><span></span>Purple</a></li>
-                            <li><a href="#" class="gray"><span></span>Violet</a></li>
-                        </ul>
-                    </div>
-                    -->
-
-
-                    <div class="color-quality-right">
-                        <h5>数量 :</h5>
-                        <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-                            <option value="null">1 件</option>
-                            <option value="null">2 件</option>
-                            <option value="null">3 件</option>
-                            <option value="null">4 件</option>
-                            <option value="null">5 件</option>
-                            <option value="null">6 件</option>
-                            <option value="null">7 件</option>
-                            <option value="null">8 件</option>
-                            <option value="null">9 件</option>
-                            <option value="null">10 件</option>
-                        </select>
-                    </div>
-                    <div class="clearfix"></div>
+                    <form method="POST"
+                          action="${pageContext.request.contextPath}/BuyServlet?type=buy&prodId=${requestScope.product.productId}">
+                        <div>
+                            <input style="padding-left: 10px; width:200px;height:35px;margin-left: 20px;border:1px solid #cccccc;"
+                                   type="text" placeholder="请输入配送地址" value="华农" name="address"/>
+                        </div>
+                        <div>
+                            <input style="padding-left:10px; width:80px;height:35px;margin-left: 20px;margin-top:25px;border:1px solid #cccccc;float:left;"
+                                   type="number" placeholder="数量" value="1" name="nums"/>${msg}
+                        </div>
+                        <div class="clearfix"></div>
+                        <div style="margin-top:30px;margin-left: 20px" class="occasion-cart">
+                            <input style="font-size: 13px;background: #ffffff;padding-left: 15px;padding-top: 7px;padding-bottom: 7px;padding-right:15px;color: #D8703F;border: 1px solid #D8703F;"
+                                   type="submit"
+                                   value="一键购买"/>
+                        </div>
+                    </form>
                 </div>
+                <br>
 
-                <div style="margin-top:-50px;margin-left: 20px" class="occasion-cart">
-                    <a class="item_add"
-                       href="${pageContext.request.contextPath}/BuyServlet?type=buy&prodId=${requestScope.product.productId}">一键购买 </a>
-                </div>
-                <br><br>
-                <div style="margin-left: 20px" class="occasion-cart">
+                <div style="margin-bottom: 20px;margin-left: 20px;float:left;margin-bottom: 30px;"
+                     class="occasion-cart">
                     <a class="item_add"
                        href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${requestScope.product.productId}">加入购物车 </a>
                 </div>
 
-                <div class="social">
+                <div style="margin-top: 50px;" class="social">
                     <div class="social-left">
                         <p>Share On :</p>
                     </div>
