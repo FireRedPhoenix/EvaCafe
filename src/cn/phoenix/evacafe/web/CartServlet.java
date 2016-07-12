@@ -58,6 +58,11 @@ public class CartServlet extends HttpServlet {
             List<Cart> carts = userService.findCartByUsername(username);
             request.setAttribute("carts", carts);
             request.getRequestDispatcher("/cart.jsp").forward(request, response);
+        } else if (type.equals("view")) {
+            //用户仅仅是查看自己的数据
+            List<Cart> carts = userService.findCartByUsername(username);
+            request.setAttribute("carts", carts);
+            request.getRequestDispatcher("/cart.jsp").forward(request, response);
         }
 
 

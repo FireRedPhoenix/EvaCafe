@@ -29,7 +29,6 @@ public class OrderOpServlet extends HttpServlet {
         //单子号
         int orderId = Integer.parseInt(request.getParameter("orderId"));
         //按照orderId查找该用户对应的订单
-
         if (request.getSession(false) == null || request.getSession(false).getAttribute("user") == null) {
             response.sendRedirect(request.getContextPath() + "/index.jsp");
             return;
@@ -87,7 +86,7 @@ public class OrderOpServlet extends HttpServlet {
         if (orderses != null && orderses.size() > 0) {
             request.setAttribute("orders", orderses);
         }
-        request.getRequestDispatcher("/jsp/myOrder.jsp").forward(request, response);
+        request.getRequestDispatcher("/myOrder.jsp").forward(request, response);
         return;
     }
 }

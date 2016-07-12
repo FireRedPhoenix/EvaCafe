@@ -152,4 +152,11 @@ public interface UserDao {
      * @return
      */
     List<Product> findNewProds(int rows);
+
+    /**
+     * 添加订单
+     * @param username
+     * @param prodId
+     */
+    void addOrder(String username, int prodId);
 }

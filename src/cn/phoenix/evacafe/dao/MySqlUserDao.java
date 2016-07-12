@@ -450,6 +450,37 @@ public class MySqlUserDao implements UserDao {
     }
 
     @Override
+    public void addOrder(String username, int prodId) {
+//        INSERT INTO orders values (NULL,'王成',7,'预备发货',1,0,'2016-7-10 10:33','武汉',0)
+        String querySql = "SELECT * FROM orders WHERE username=? AND prodId=?";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+/*
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement(querySql);
+            statement.setInt(1, rows);
+            resultSet = statement.executeQuery();
+
+            List<Product> prods = new ArrayList<Product>();
+            while (resultSet.next()) {
+                Product prod = createProd(resultSet);
+                prods.add(prod);
+            }
+            return prods;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(connection, statement, resultSet);
+        }
+*/
+
+    }
+
+    @Override
     public Product findProdById(int prodId) {
         Connection connection = null;
         PreparedStatement statement = null;

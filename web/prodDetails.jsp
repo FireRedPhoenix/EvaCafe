@@ -359,37 +359,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                     </div>
                     -->
+
+
                     <div class="color-quality-right">
                         <h5>数量 :</h5>
                         <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+                            <option value="null">1 件</option>
+                            <option value="null">2 件</option>
+                            <option value="null">3 件</option>
+                            <option value="null">4 件</option>
                             <option value="null">5 件</option>
                             <option value="null">6 件</option>
                             <option value="null">7 件</option>
+                            <option value="null">8 件</option>
+                            <option value="null">9 件</option>
                             <option value="null">10 件</option>
                         </select>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <!--
-                <div class="occasional">
-                    <h5>Occasion :</h5>
 
-                    <div class="colr ert">
-                        <label class="radio"><input type="radio" name="radio" checked=""><i></i>Casual Wear</label>
-                    </div>
-                    <div class="colr">
-                        <label class="radio"><input type="radio" name="radio"><i></i>Party Wear</label>
-                    </div>
-                    <div class="colr">
-                        <label class="radio"><input type="radio" name="radio"><i></i>Formal Wear</label>
-                    </div>
-                    <div class="clearfix"></div>
+                <div style="margin-top:-50px;margin-left: 20px" class="occasion-cart">
+                    <a class="item_add"
+                       href="${pageContext.request.contextPath}/BuyServlet?type=buy&prodId=${requestScope.product.productId}">一键购买 </a>
                 </div>
-                -->
-                <div class="occasion-cart">
+                <br><br>
+                <div style="margin-left: 20px" class="occasion-cart">
                     <a class="item_add"
                        href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${requestScope.product.productId}">加入购物车 </a>
                 </div>
+
                 <div class="social">
                     <div class="social-left">
                         <p>Share On :</p>

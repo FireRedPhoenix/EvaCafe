@@ -204,4 +204,13 @@ public class UserService {
     public List<Product> findNewProds(int i) {
         return userDao.findNewProds(i);
     }
+
+    /**
+     * 添加订单
+     * @param username
+     * @param prodId
+     */
+    public void addOrder(String username, int prodId) {
+        userDao.addOrder(username,prodId);
+    }
 }

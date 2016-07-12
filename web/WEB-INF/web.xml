@@ -28,7 +28,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>OrderServlet</servlet-name>
-        <url-pattern>/servlet/OrderServlet</url-pattern>
+        <url-pattern>/OrderServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -37,7 +37,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>OrderOpServlet</servlet-name>
-        <url-pattern>/servlet/OrderOpServlet</url-pattern>
+        <url-pattern>/OrderOpServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -65,6 +65,15 @@
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BuyServlet</servlet-name>
+        <servlet-class>cn.phoenix.evacafe.web.BuyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BuyServlet</servlet-name>
+        <url-pattern>/BuyServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

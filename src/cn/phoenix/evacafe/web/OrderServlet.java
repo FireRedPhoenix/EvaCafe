@@ -38,7 +38,7 @@ public class OrderServlet extends HttpServlet {
             if (orderses != null && orderses.size() > 0) {
                 request.setAttribute("orders", orderses);
             }
-            request.getRequestDispatcher("/jsp/myOrder.jsp").forward(request, response);
+            request.getRequestDispatcher("/myOrder.jsp").forward(request, response);
             return;
         }
     }

@@ -9,7 +9,7 @@
 <html>
 <head>
     <!--<meta charset="utf-8"/>-->
-    <title>Login</title>
+    <title>登录</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html" ; charset="utf-8"/>
@@ -55,12 +55,8 @@
             <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
                 <ul>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">@example.com</a></li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 <span>567</span> 890</li>
-                    <li class="active"><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a
-                            href="login.html">Login</a></li>
-                    <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="${pageContext.request.contextPath}/LogInOutServlet?type=register">Register</a>
-                    </li>
+                            href="mailto:info@example.com">347861304@qq.com</a></li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+159 <span>2711</span> 4610</li>
                 </ul>
             </div>
             <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
@@ -75,7 +71,7 @@
         </div>
         <div class="logo-nav">
             <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-                <h1><a href="index.html">Coffee House<span>Shop anywhere</span></a></h1>
+                <h1><a href="index.html">最好的咖啡屋<span>Shop anywhere</span></a></h1>
             </div>
             <div class="logo-nav-left1">
                 <nav class="navbar navbar-default">
@@ -91,7 +87,7 @@
                     </div>
                     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html">主页</a></li>
                             <!-- Mega Menu -->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b
@@ -224,8 +220,8 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Login Page</li>
+            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>主页</a></li>
+            <li class="active">登录</li>
         </ol>
     </div>
 </div>
@@ -233,27 +229,25 @@
 <!-- login -->
 <div class="login">
     <div class="container">
-        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Login Form</h3>
+        <h3 class="animated wow zoomIn" data-wow-delay=".5s">登录</h3>
 
-        <p class="est animated wow zoomIn" data-wow-delay=".5s">Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia
-            deserunt mollit anim id est laborum.</p>
+        <p class="est animated wow zoomIn" data-wow-delay=".5s">最好的咖啡屋，全球荣誉品牌</p>
 
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
             <form method="post" action="${pageContext.request.contextPath}/LogInOutServlet?type=login" name="form">
-                <input type="text" placeholder="Username" name="username">
-                <input type="password" placeholder="Password" name="password">
+                <input type="text" placeholder="用户名" name="username">
+                <input type="password" placeholder="密码" name="password">
 
-                <div class="forgot">
-                    <a href="#">Forgot Password?</a>
-                </div>
-                <input type="submit" value="Login">
+                <%--<div class="forgot">--%>
+                    <%--<a href="#">Forgot Password?</a>--%>
+                <%--</div>--%>
+                <input type="submit" value="登录">
             </form>
         </div>
-        <h4 class="animated wow slideInUp" data-wow-delay=".5s">For New People</h4>
+        <h4 class="animated wow slideInUp" data-wow-delay=".5s">新用户</h4>
 
-        <p class="animated wow slideInUp" data-wow-delay=".5s"><a href="register.jsp">Register Here</a> (Or) go back to
-            <a href="index.html">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+        <p class="animated wow slideInUp" data-wow-delay=".5s"><a href="register.jsp">在这注册</a> (Or) 返回主页
+            <a href="index.jsp">主页<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
     </div>
 </div>
 <!-- //login -->
@@ -262,57 +256,58 @@
     <div class="container">
         <div class="footer-grids">
             <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
-                <h3>About Us</h3>
+                <h3>关于我们</h3>
 
-                <p>The day to enjoy the coffee,refined and cultured leisurely. We have introduced
-                    Brazil,Preu,Mocha,Columbia and other coffee raw materials,special processing.</span></p>
+                <p>最好的咖啡屋成立于2016年7月12日，是目前全球领先的咖啡综合服务提供商之一。<span> 成立以来，我们一直秉承“一切以用户价值为依归”的经营理念，
+                为亿级海量用户提供稳定优质的各类服务，始终处于稳健发展的状态。</span></p>
             </div>
             <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
-                <h3>Contact Info</h3>
+                <h3>联系方式</h3>
                 <ul>
-                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Wuhan
-                        <span>Hubei Provance</span></li>
+                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>武汉
+                        <span>湖北省</span></li>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">info@example.com</a></li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 890</li>
+                            href="mailto:info@example.com">347861304@qq.com</a></li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+159 2711 4610</li>
                 </ul>
             </div>
             <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
-                <h3>Flickr Posts</h3>
+                <h3>合作商家</h3>
 
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/13.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="images/13.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/14.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="images/14.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/15.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="images/15.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/16.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="images/16.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/35.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="images/13.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/36.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="images/14.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/37.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="images/15.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/38.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="images/16.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/39.jpg" alt=" " class="img-responsive"/></a>
+                    <img src="images/13.jpg" alt=" " class="img-responsive"/>
                 </div>
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
-                <h3>Blog Posts</h3>
+                <h3>我们的博客</h3>
 
                 <div class="footer-grid-sub-grids">
+                    <div class="footer-grid-sub-grid-left">
                     <div class="footer-grid-sub-grid-left">
                         <a href="single.html"><img src="images/9.jpg" alt=" " class="img-responsive"/></a>
                     </div>

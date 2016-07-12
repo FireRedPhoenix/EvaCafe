@@ -245,7 +245,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- checkout -->
 <div class="checkout">
     <div class="container">
-        <h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping cart contains: <span>3 Products</span>
+        <h3 class="animated wow slideInLeft" data-wow-delay=".5s">你的购物车包含 <span>3 件商品</span>
         </h3>
 
         <div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
@@ -334,11 +334,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <%--<li>Product1 <i>-</i> <span>$250.00 </span></li>--%>
                     <%--<li>Product2 <i>-</i> <span>$290.00 </span></li>--%>
                     <%--<li>Product3 <i>-</i> <span>$299.00 </span></li>--%>
-                    <li>Total <i>-</i> <span>￥<fmt:formatNumber type="number" value="${requestScope.price}" maxFractionDigits="3"/></span></li>
+                    <li>Total <i>-</i> <span>￥<fmt:formatNumber type="number" value="${requestScope.price}"
+                                                                maxFractionDigits="3"/></span></li>
                 </ul>
             </div>
             <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
-                <a href="${pageContext.request.contextPath}/index.jsp"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue
+                <a href="${pageContext.request.contextPath}/index.jsp"><span class="glyphicon glyphicon-menu-left"
+                                                                             aria-hidden="true"></span>Continue
                     Shopping</a>
             </div>
             <div class="clearfix"></div>
