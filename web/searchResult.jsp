@@ -227,7 +227,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
         <div class="col-md-4 products-left">
             <div class="filter-price animated wow slideInUp" data-wow-delay=".5s">
-                <h3>Filter By Price</h3>
+                <h3>价格区间</h3>
                 <ul class="dropdown-menu1">
                     <li><a href="">
                         <div id="slider-range"></div>
@@ -254,126 +254,75 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!---->
             </div>
             <div class="categories animated wow slideInUp" data-wow-delay=".5s">
-                <h3>Categories</h3>
+                <h3>按种类搜</h3>
                 <ul class="cate">
-                    <li><a href="products.html">Best Selling</a> <span>(15)</span></li>
-                    <li><a href="products.html">Man</a> <span>(16)</span></li>
+                    <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=popular&page=0">最受欢迎</a> </li>
+                    <li>品牌</li>
                     <ul>
-                        <li><a href="products.html">Accessories</a> <span>(2)</span></li>
-                        <li><a href="products.html">Coats & Jackets</a> <span>(5)</span></li>
-                        <li><a href="products.html">Jeans</a> <span>(1)</span></li>
-                        <li><a href="products.html">New Arrivals</a> <span>(0)</span></li>
-                        <li><a href="products.html">Suits</a> <span>(1)</span></li>
-                        <li><a href="products.html">Casual Shirts</a> <span>(0)</span></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=雀巢&page=0">雀巢</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=麦斯威尔&page=0">麦斯威尔</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=中原&page=0">中原</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=意利&page=0">意利</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=吉意欧&page=0">吉意欧</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=星巴克&page=0">星巴克</a></li>
                     </ul>
-                    <li><a href="products.html">Sales</a> <span>(15)</span></li>
-                    <li><a href="products.html">Woman</a> <span>(15)</span></li>
+                    <li>品质</li>
                     <ul>
-                        <li><a href="products.html">Accessories</a> <span>(2)</span></li>
-                        <li><a href="products.html">New Arrivals</a> <span>(0)</span></li>
-                        <li><a href="products.html">Dresses</a> <span>(1)</span></li>
-                        <li><a href="products.html">Casual Shirts</a> <span>(0)</span></li>
-                        <li><a href="products.html">Shorts</a> <span>(4)</span></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=AA&page=0">AA</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=Apage=0">A</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=B&page=0">B</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=C&page=0">C</a></li>
+                    </ul>
+                    <li>口味</li>
+                    <ul>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=狂野&page=0">狂野</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=清香&page=0">清香</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=浓烈&page=0">浓烈</a></li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=芳香&page=0">芳香</a> </li>
+                        <li><a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=香甜&page=0">香甜</a><!-- <span>(4)</span>--></li>
                     </ul>
                 </ul>
             </div>
             <div class="new-products animated wow slideInUp" data-wow-delay=".5s">
-                <h3>New Products</h3>
+                <h3>新品</h3>
 
                 <div class="new-products-grids">
-                    <div class="new-products-grid">
-                        <div class="new-products-grid-left">
-                            <a href="single.html"><img src="images/6.jpg" alt=" " class="img-responsive"/></a>
-                        </div>
-                        <div class="new-products-grid-right">
-                            <h4><a href="single.html">occaecat cupidatat</a></h4>
+                    <c:forEach items="${requestScope.newProds}" var="newProd">
+                        <div class="new-products-grid">
+                            <div class="new-products-grid-left">
+                                <a href="${pageContext.request.contextPath}/ProdDetailsServlet?prodId=${newProd.productId}"><img
+                                        src="images/products/${newProd.paths[0]}" alt=" " class="img-responsive"/></a>
+                            </div>
+                            <div class="new-products-grid-right">
+                                <h4>${newProd.productName}</h4>
 
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive">
+                                <div class="rating">
+                                    <div class="rating-left">
+                                        <img src="images/2.png" alt=" " class="img-responsive">
+                                    </div>
+                                    <div class="rating-left">
+                                        <img src="images/2.png" alt=" " class="img-responsive">
+                                    </div>
+                                    <div class="rating-left">
+                                        <img src="images/2.png" alt=" " class="img-responsive">
+                                    </div>
+                                    <div class="rating-left">
+                                        <img src="images/1.png" alt=" " class="img-responsive">
+                                    </div>
+                                    <div class="rating-left">
+                                        <img src="images/1.png" alt=" " class="img-responsive">
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive">
+                                <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
+                                    <p><span class="item_price">￥${newProd.price}</span><a class="item_add"
+                                                                                           href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${newProd.productId}">加入购物车</a>
+                                    </p>
                                 </div>
-                                <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
                             </div>
-                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><span class="item_price">$180</span><a class="item_add" href="#">add to cart </a></p>
-                            </div>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="new-products-grid">
-                        <div class="new-products-grid-left">
-                            <a href="single.html"><img src="images/26.jpg" alt=" " class="img-responsive"/></a>
-                        </div>
-                        <div class="new-products-grid-right">
-                            <h4><a href="single.html">eum fugiat quo</a></h4>
-
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><span class="item_price">$250</span><a class="item_add" href="#">add to cart </a></p>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="new-products-grid">
-                        <div class="new-products-grid-left">
-                            <a href="single.html"><img src="images/11.jpg" alt=" " class="img-responsive"/></a>
-                        </div>
-                        <div class="new-products-grid-right">
-                            <h4><a href="single.html">officia deserunt</a></h4>
-
-                            <div class="rating">
-                                <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="images/2.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="rating-left">
-                                    <img src="images/1.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
-                                <p><span class="item_price">$259</span><a class="item_add" href="#">add to cart </a></p>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
             <div class="men-position animated wow slideInUp" data-wow-delay=".5s">
@@ -422,6 +371,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <c:forEach items="${requestScope.searchResult}" var="prod" varStatus="status">
                 <c:choose>
                 <c:when test="${status.index == 0}">
+                    <%System.out.print("<div2>\n    <div3></div3>\n");%>
                     <div class="col-md-4 products-right-grids-bottom-grid">
                     <div class="new-collections-grid1 products-right-grid1 animated wow slideInUp"
                          data-wow-delay=".5s">
@@ -454,19 +404,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </div>
                         </div>
-                        <h4><a href="${pageContext.request.contextPath}/ProdDetailsServlet?prodId=${prod.productId}">${prod.productName}</a></h4>
+                        <h4>
+                            <a href="${pageContext.request.contextPath}/ProdDetailsServlet?prodId=${prod.productId}">${prod.productName}</a>
+                        </h4>
 
                         <p>${prod.introduction}</p>
 
                         <div class="simpleCart_shelfItem products-right-grid1-add-cart">
-                            <p><i>$325</i> <span class="item_price">￥${prod.price}</span><a class="item_add" href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${prod.productId}">加入购物车</a></p>
+                            <p><i>$325</i> <span class="item_price">￥${prod.price}</span><a class="item_add"
+                                                                                            href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${prod.productId}">加入购物车</a>
+                            </p>
                         </div>
                     </div>
                     <c:if test="${status.last}">
+                        <%System.out.println("</div2>");%>
                         </div>
                     </c:if>
                 </c:when>
                 <c:when test="${status.last}">
+                    <%System.out.print("    <div3></div3>\n</div2>\n");%>
                 <div class="new-collections-grid1 products-right-grid1 animated wow slideInUp"
                      data-wow-delay=".5s">
                     <div class="new-collections-grid1-image">
@@ -498,17 +454,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                     </div>
-                    <h4><a href="${pageContext.request.contextPath}/ProdDetailsServlet?prodId=${prod.productId}">${prod.productName}</a></h4>
+                    <h4>
+                        <a href="${pageContext.request.contextPath}/ProdDetailsServlet?prodId=${prod.productId}">${prod.productName}</a>
+                    </h4>
 
                     <p>${prod.introduction}</p>
 
                     <div class="simpleCart_shelfItem products-right-grid1-add-cart">
-                        <p><i>$325</i> <span class="item_price">￥${prod.price}</span><a class="item_add" href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${prod.productId}">加入购物车</a></p>
+                        <p><i>$325</i> <span class="item_price">￥${prod.price}</span><a class="item_add"
+                                                                                        href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${prod.productId}">加入购物车</a>
+                        </p>
                     </div>
                 </div>
             </div>
             </c:when>
             <c:when test="${status.index % 3 == 2}">
+            <%System.out.print("    <div3></div3>\n</div2>\n<div2>\n");%>
             <div class="new-collections-grid1 products-right-grid1 animated wow slideInUp"
                  data-wow-delay=".5s">
                 <div class="new-collections-grid1-image">
@@ -540,18 +501,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                 </div>
-                <h4><a href="${pageContext.request.contextPath}/ProdDetailsServlet?prodId=${prod.productId}">${prod.productName}</a></h4>
+                <h4>
+                    <a href="${pageContext.request.contextPath}/ProdDetailsServlet?prodId=${prod.productId}">${prod.productName}</a>
+                </h4>
 
                 <p>${prod.introduction}</p>
 
                 <div class="simpleCart_shelfItem products-right-grid1-add-cart">
-                    <p><i>$325</i> <span class="item_price">￥${prod.price}</span><a class="item_add" href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${prod.productId}">加入购物车</a></p>
+                    <p><i>$325</i> <span class="item_price">￥${prod.price}</span><a class="item_add"
+                                                                                    href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${prod.productId}">加入购物车</a>
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-md-4 products-right-grids-bottom-grid">
             </c:when>
             <c:otherwise>
+                <% System.out.print("    <div3></div3>\n");%>
                 <div class="new-collections-grid1 products-right-grid1 animated wow slideInUp"
                      data-wow-delay=".5s">
                     <div class="new-collections-grid1-image">
@@ -583,12 +549,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                     </div>
-                    <h4><a href="${pageContext.request.contextPath}/ProdDetailsServlet?prodId=${prod.productId}">${prod.productName}</a></h4>
+                    <h4>
+                        <a href="${pageContext.request.contextPath}/ProdDetailsServlet?prodId=${prod.productId}">${prod.productName}</a>
+                    </h4>
 
                     <p>${prod.introduction}</p>
 
                     <div class="simpleCart_shelfItem products-right-grid1-add-cart">
-                        <p><i>$325</i> <span class="item_price">￥${prod.price}</span><a class="item_add" href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${prod.productId}">加入购物车</a></p>
+                        <p><i>$325</i> <span class="item_price">￥${prod.price}</span><a class="item_add"
+                                                                                        href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${prod.productId}">加入购物车</a>
+                        </p>
                     </div>
                 </div>
             </c:otherwise>
@@ -598,21 +568,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"></div>
         </div>
         <nav class="numbering animated wow slideInRight" data-wow-delay=".5s">
+            <%
+                Integer totalPages = (Integer) request.getAttribute("totalPages");
+                Integer currentPage = (Integer) request.getAttribute("currentPage");
+            %>
             <ul class="pagination paging">
                 <li>
+                    <%
+                        if (currentPage == 0) {
+                            //恰好是第一页
+                    %>
                     <a href="#" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
+                    <%
+                    } else {
+                    %>
+                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=${requestScope.search}&page=<%=currentPage - 1%>"
+                       aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    <%
+                        }
+                    %>
                 </li>
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2<span class="sr-only">(current)</span></a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
+                <%
+                    int i = 1;
+                    for (i = 1; i <= totalPages; i++) {
+                        if (currentPage == i - 1) {
+                %>
+                <li class="active">
+                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=${requestScope.search}&page=<%=i-1%>"><%=i%><span
+                            class="sr-only">(current)</span>
+                    </a></li>
+                <%
+                } else {
+                %>
                 <li>
+                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=${requestScope.search}&page=<%=i-1%>"><%=i%>
+                    </a></li>
+                <%
+                        }
+                    }
+                %>
+                <li>
+                    <%
+                        if (currentPage == totalPages - 1) {
+                            //恰好是最后一页
+                    %>
                     <a href="#" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
+                    <%
+                    } else {
+                    %>
+                    <a href="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&search=${requestScope.search}&page=<%=currentPage + 1%>"
+                       aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    <%
+                        }
+                    %>
                 </li>
             </ul>
         </nav>

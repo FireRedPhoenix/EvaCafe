@@ -6,7 +6,7 @@ import org.junit.Test;
 public class TestC {
     @Test
     public void test1() {
-        int num = 10;
+        int num = 3;
         for (int i = 0; i < num; i++) {
             if (i == 0) {
                 System.out.print("<div2>\n    <div3></div3>\n");

@@ -36,7 +36,7 @@ public interface UserDao {
      * @param phoneNumber 手机号码
      * @return 返回注册完成的用户对象，如果注册失败则返回空
      */
-    public User addUser(String username, String password, String phoneNumber,String email);
+    public User addUser(String username, String password, String phoneNumber, String email);
 
     /**
      * 通过用户名寻找用户的订单
@@ -98,6 +98,7 @@ public interface UserDao {
 
     /**
      * 找出好评数前nums的产品
+     *
      * @param nums
      * @return 返回查询到的产品
      */
@@ -105,6 +106,7 @@ public interface UserDao {
 
     /**
      * 将id为prodId的商品添加到用户username的购物车中
+     *
      * @param username
      * @param prodId
      * @return 若添加成功则返回true，否则返回false
@@ -113,6 +115,7 @@ public interface UserDao {
 
     /**
      * 通过用户名来寻找该用户的购物车商品
+     *
      * @param username
      * @return
      */
@@ -120,14 +123,33 @@ public interface UserDao {
 
     /**
      * 删除购物车中商品id为prodId的商品
+     *
      * @param prodId
      */
     void deleteCart(int prodId);
 
     /**
      * 通过关键字对商品进行模糊搜索
+     *
      * @param keyword
      * @return
      */
     List<Product> searchKeyword(String keyword);
+
+    /**
+     * 通过关键字对商品进行模糊分页搜索
+     *
+     * @param keyword
+     * @return
+     */
+    List<Product> searchKeyword(String keyword, int startIndex, int length);
+
+    int searchKeywordRows(String keyword);
+
+    /**
+     * 搜索最新的前rows行商品
+     * @param rows
+     * @return
+     */
+    List<Product> findNewProds(int rows);
 }

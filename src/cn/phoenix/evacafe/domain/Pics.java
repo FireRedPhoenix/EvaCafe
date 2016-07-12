@@ -1,9 +1,11 @@
 package cn.phoenix.evacafe.domain;
 
+import cn.phoenix.evacafe.domain.base.CafeObj;
+
 /**
  * Created by Phoenix on 2016/7/8.
  */
-public class Pics {
+public class Pics extends CafeObj {
     //图片编号，主键
     private int picId;
     //图片路径，存储绝对路径

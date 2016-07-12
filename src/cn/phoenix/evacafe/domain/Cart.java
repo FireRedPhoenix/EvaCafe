@@ -1,9 +1,11 @@
 package cn.phoenix.evacafe.domain;
 
+import cn.phoenix.evacafe.domain.base.CafeObj;
+
 /**
  * Created by Phoenix on 2016/7/8.
  */
-public class Cart {
+public class Cart extends CafeObj {
     //主键
 //    private int cartId;
     //用户名，外键

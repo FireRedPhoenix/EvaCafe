@@ -60,8 +60,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
                 <ul>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">@example.com</a></li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 892</li>
+                            href="mailto:info@example.com">347861304@qq.com</a></li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+159 2711 4610</li>
                     <c:if test="${sessionScope.user != null}">
                         <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>${sessionScope.user.username}
                         </li>
@@ -89,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="logo-nav">
             <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-                <h1><a href="index.html">Best Store <span>Shop anywhere</span></a></h1>
+                <h1><a href="index.jsp">最好的咖啡屋<span><br><br>欣赏 随心所欲</span></a></h1>
             </div>
             <div class="logo-nav-left1">
                 <nav class="navbar navbar-default">
@@ -105,10 +105,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.html" class="act">Home</a></li>
+                            <li class="active"><a href="#" class="act">主页</a></li>
                             <!-- Mega Menu -->
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">咖啡<b
                                         class="caret"></b></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <div class="row">
@@ -188,7 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </ul>
                             </li>
                             <li><a href="short-codes.html">Short Codes</a></li>
-                            <li><a href="mail.html">Mail Us</a></li>
+                            <li><a href="mail.html">联系我们</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -196,7 +196,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="logo-nav-right">
                 <div class="search-box">
                     <div id="sb-search" class="sb-search">
-                        <form action="${pageContext.request.contextPath}/SearchServlet" METHOD="POST">
+                        <form action="${pageContext.request.contextPath}/SearchServlet?searchType=keyword&page=0"
+                              METHOD="POST">
                             <input class="sb-search-input" placeholder="Enter your search term..." type="search"
                                    id="search" name="search">
                             <input class="sb-search-submit" type="submit" value="">
@@ -238,29 +239,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="banner">
     <div class="container">
         <div class="banner-info animated wow zoomIn" data-wow-delay=".5s">
-            <h3>Free Online Shopping</h3>
-            <h4>Up to <span>50% <i>Off/-</i></span></h4>
+            <h3>自由的在线购物商店</h3>
+            <h4>高达 <span>40% <i>减价/-</i></span></h4>
 
             <div class="wmuSlider example1">
                 <div class="wmuSliderWrapper">
                     <article style="position: absolute; width: 100%; opacity: 0;">
                         <div class="banner-wrap">
                             <div class="banner-info1">
-                                <p>T-Shirts + Formal Pants + Jewellery + Cosmetics</p>
+                                <p>咖啡豆 + 咖啡粉 + 咖啡条 + 挂耳咖啡</p>
                             </div>
                         </div>
                     </article>
                     <article style="position: absolute; width: 100%; opacity: 0;">
                         <div class="banner-wrap">
                             <div class="banner-info1">
-                                <p>Toys + Furniture + Lighting + Watches</p>
+                                <p>咖啡机 + 咖啡杯 + 咖啡壶 + 咖啡桌</p>
                             </div>
                         </div>
                     </article>
                     <article style="position: absolute; width: 100%; opacity: 0;">
                         <div class="banner-wrap">
                             <div class="banner-info1">
-                                <p>Tops + Books & Media + Sports</p>
+                                <p>雀巢 + 麦斯威尔 & 中原 + 吉意欧</p>
                             </div>
                         </div>
                     </article>
@@ -283,14 +284,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <figure class="effect-julia">
                         <img src="images/4.jpg" style="width:388px;height:426px;" alt=" " class="img-responsive"/>
                         <figcaption>
-                            <h3>Coffee <span>Store</span><i> in online shopping</i></h3>
+                            <h3>咖啡<span>豆</span><i> 在线购</i></h3>
 
                             <div>
-                                <p>Cupidatat non proident, sunt</p>
+                                <p>美味</p>
 
-                                <p>Officia deserunt mollit anim</p>
+                                <p>清香</p>
 
-                                <p>Laboris nisi ut aliquip consequat</p>
+                                <p>提神</p>
                             </div>
                         </figcaption>
                     </figure>
@@ -302,7 +303,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <img src="images/1.jpg" style="width:640px;height:200px;" alt=" " class="img-responsive"/>
                     </div>
                     <div class="banner-bottom-grid-left1-pos">
-                        <p>Discount 45%</p>
+                        <p>折扣 45%</p>
                     </div>
                 </div>
                 <div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
@@ -311,7 +312,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="banner-bottom-grid-left1-position">
                         <div class="banner-bottom-grid-left1-pos1">
-                            <p>Latest New Collections</p>
+                            <p>最近新品</p>
                         </div>
                     </div>
                 </div>
@@ -322,7 +323,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <img src="images/3.jpg" style="width:388px;height:426px;" alt=" " class="img-responsive"/>
                     </div>
                     <div class="grid-left-grid1-pos">
-                        <p>top and classic designs <span>2016 Collection</span></p>
+                        <p>经典口味 <span>2016 年度</span></p>
                     </div>
                 </div>
             </div>
@@ -336,9 +337,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
         <h3 class="animated wow zoomIn" data-wow-delay=".5s">热品推荐</h3>
 
-        <p class="est animated wow zoomIn" data-wow-delay=".5s">Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia
-            deserunt mollit anim id est laborum.</p>
+        <p class="est animated wow zoomIn" data-wow-delay=".5s">风靡50年的天赋醇香，媲美研磨咖啡的细腻口感</p>
 
         <div class="new-collections-grids">
             <div class="col-md-3 new-collections-grid">
@@ -378,7 +377,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="new-collections-grid1-left simpleCart_shelfItem">
                         <p><i>$325</i> <span class="item_price">￥${sessionScope.hotProds[0].price}</span><br><a
-                                class="item_add" href="#">add to cart </a>
+                                class="item_add" href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${sessionScope.hotProds[0].productId}">加入购物车 </a>
                         </p>
                     </div>
                 </div>
@@ -418,7 +417,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="new-collections-grid1-left simpleCart_shelfItem">
                         <p><i>$280</i> <span class="item_price">￥${sessionScope.hotProds[1].price}</span><br><a
-                                class="item_add" href="#">add to cart </a>
+                                class="item_add" href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${sessionScope.hotProds[1].productId}">加入购物车 </a>
                         </p>
                     </div>
                 </div>
@@ -428,7 +427,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                      data-wow-delay=".5s">
                     <div class="new-collections-grid1-image">
                         <a href="single.html" class="product-image"><img
-                                src="images/products/${sessionScope.hotProds[2].paths[0]}" style="width: 600px;height: 500px" alt=" "
+                                src="images/products/${sessionScope.hotProds[2].paths[0]}"
+                                style="width: 600px;height: 500px" alt=" "
                                 class="img-responsive"/></a>
 
                         <div class="new-collections-grid1-image-pos new-collections-grid1-image-pos1">
@@ -464,7 +464,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="new-collections-grid1-left simpleCart_shelfItem">
                         <p><i>$580</i> <span class="item_price">${sessionScope.hotProds[2].price}</span><br><a
-                                class="item_add" href="#">add to cart </a>
+                                class="item_add" href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${sessionScope.hotProds[2].productId}">加入购物车 </a>
                         </p>
                     </div>
                 </div>
@@ -506,8 +506,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                             <div class="new-collections-grid1-left simpleCart_shelfItem">
                                 <p><i>$480</i> <span class="item_price">￥${sessionScope.hotProds[3].price}</span><br><a
-                                        class="item_add" href="#">add to
-                                    cart </a></p>
+                                        class="item_add" href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${sessionScope.hotProds[3].productId}">加入购物车 </a></p>
                             </div>
                         </div>
                     </div>
@@ -548,7 +547,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                             <div class="new-collections-grid1-left simpleCart_shelfItem">
                                 <p><i>$280</i> <span class="item_price">￥${sessionScope.hotProds[4].price}</span><br><a
-                                        class="item_add" href="#">add to cart </a></p>
+                                        class="item_add" href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${sessionScope.hotProds[4].productId}">加入购物车 </a></p>
                             </div>
                         </div>
                     </div>
@@ -592,7 +591,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="new-collections-grid1-left simpleCart_shelfItem">
                         <p><i>$180</i> <span class="item_price">￥${sessionScope.hotProds[5].price}</span><br><a
-                                class="item_add" href="#">add to cart </a>
+                                class="item_add" href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${sessionScope.hotProds[5].productId}">加入购物车 </a>
                         </p>
                     </div>
                 </div>
@@ -632,7 +631,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="new-collections-grid1-left simpleCart_shelfItem">
                         <p><i>$340</i> <span class="item_price">￥${sessionScope.hotProds[6].price}</span><br><a
-                                class="item_add" href="#">add to cart </a>
+                                class="item_add" href="${pageContext.request.contextPath}/CartServlet?type=add&prodId=${sessionScope.hotProds[6].productId}">加入购物车 </a>
                         </p>
                     </div>
                 </div>
@@ -642,59 +641,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 <!-- //collections -->
-<!-- new-timer -->
-<div class="timer">
-    <div class="container">
-        <div class="timer-grids">
-            <div class="col-md-8 timer-grid-left animated wow slideInLeft" data-wow-delay=".5s">
-                <h3><a href="products.html">sunt in culpa qui officia deserunt mollit</a></h3>
-
-                <div class="rating">
-                    <div class="rating-left">
-                        <img src="images/2.png" alt=" " class="img-responsive"/>
-                    </div>
-                    <div class="rating-left">
-                        <img src="images/2.png" alt=" " class="img-responsive"/>
-                    </div>
-                    <div class="rating-left">
-                        <img src="images/2.png" alt=" " class="img-responsive"/>
-                    </div>
-                    <div class="rating-left">
-                        <img src="images/2.png" alt=" " class="img-responsive"/>
-                    </div>
-                    <div class="rating-left">
-                        <img src="images/1.png" alt=" " class="img-responsive"/>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="new-collections-grid1-left simpleCart_shelfItem timer-grid-left-price">
-                    <p><i>$580</i> <span class="item_price">$550</span></p>
-                    <h4>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-                        nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit
-                        qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui
-                        dolorem eum fugiat quo voluptas nulla pariatur.</h4>
-
-                    <p><a class="item_add timer_add" href="#">add to cart </a></p>
-                </div>
-                <div id="counter"></div>
-                <script src="js/jquery.countdown.js"></script>
-                <script src="js/script.js"></script>
-            </div>
-            <div class="col-md-4 timer-grid-right animated wow slideInRight" data-wow-delay=".5s">
-                <div class="timer-grid-right1">
-                    <img src="images/17.jpg" alt=" " class="img-responsive"/>
-
-                    <div class="timer-grid-right-pos">
-                        <h4>Special Offer</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-<!-- //new-timer -->
 <!-- collections-bottom -->
+<!--
 <div class="collections-bottom">
     <div class="container">
         <div class="collections-bottom-grids">
@@ -716,29 +664,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 </div>
+-->
 <!-- //collections-bottom -->
 <!-- footer -->
 <div class="footer">
     <div class="container">
         <div class="footer-grids">
             <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
-                <h3>About Us</h3>
+                <h3>关于我们</h3>
 
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit.</span></p>
+                <p>最好的咖啡屋成立于2016年7月12日，是目前全球领先的咖啡综合服务提供商之一。<span> 成立以来，我们一直秉承“一切以用户价值为依归”的经营理念，
+                为亿级海量用户提供稳定优质的各类服务，始终处于稳健发展的状态。</span></p>
             </div>
             <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
-                <h3>Contact Info</h3>
+                <h3>联系方式</h3>
                 <ul>
-                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span>
+                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>信息学院103实验室<span>华中农业大学</span>
                     </li>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">info@example.com</a></li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
+                            href="mailto:info@example.com">347861304@qq.com</a></li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+159 2711 4610</li>
                 </ul>
             </div>
             <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
-                <h3>Flickr Posts</h3>
+                <h3>合作商家</h3>
 
                 <div class="footer-grid-left">
                     <a href="single.html"><img src="images/13.jpg" alt=" " class="img-responsive"/></a>
@@ -766,29 +715,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="footer-grid-left">
                     <a href="single.html"><img src="images/13.jpg" alt=" " class="img-responsive"/></a>
-                </div>
-                <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/14.jpg" alt=" " class="img-responsive"/></a>
-                </div>
-                <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/15.jpg" alt=" " class="img-responsive"/></a>
-                </div>
-                <div class="footer-grid-left">
-                    <a href="single.html"><img src="images/16.jpg" alt=" " class="img-responsive"/></a>
                 </div>
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
-                <h3>Blog Posts</h3>
+                <h3>我们的博客</h3>
 
                 <div class="footer-grid-sub-grids">
                     <div class="footer-grid-sub-grid-left">
                         <a href="single.html"><img src="images/9.jpg" alt=" " class="img-responsive"/></a>
                     </div>
                     <div class="footer-grid-sub-grid-right">
-                        <h4><a href="single.html">culpa qui officia deserunt</a></h4>
+                        <h4><a href="single.html">http://www.yunweipai.com/archives/8354.html?ref=myread</a></h4>
 
-                        <p>Posted On 25/3/2016</p>
+                        <p>发表于 On 12/7/2016</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -797,9 +737,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="single.html"><img src="images/10.jpg" alt=" " class="img-responsive"/></a>
                     </div>
                     <div class="footer-grid-sub-grid-right">
-                        <h4><a href="single.html">Quis autem vel eum iure</a></h4>
+                        <h4><a href="single.html">http://my.csdn.net/my/mycsdn</a></h4>
 
-                        <p>Posted On 25/3/2016</p>
+                        <p>发表于 On 12/7/2016</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -807,11 +747,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"></div>
         </div>
         <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-            <h2><a href="index.html">Best Store <span>shop anywhere</span></a></h2>
+            <h2><a href="index.html">最好的咖啡屋<span>shop anywhere</span></a></h2>
         </div>
         <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
-            <p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank"
-                                                                         href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+            <p>Copyright &copy; 2016.Best Store All rights reserved.
             </p>
         </div>
     </div>

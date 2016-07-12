@@ -153,12 +153,13 @@ public class UserService {
 
     /**
      * 将id为prodId的商品添加到用户username的购物车中
+     *
      * @param username
      * @param prodId
      * @return 若添加成功则返回true，否则返回false
      */
     public boolean addToCart(String username, int prodId) {
-        return userDao.addToCart(username,prodId);
+        return userDao.addToCart(username, prodId);
     }
 
     public List<Cart> findCartByUsername(String username) {
@@ -167,6 +168,7 @@ public class UserService {
 
     /**
      * 删除购物车中商品id为prodId的商品
+     *
      * @param prodId
      */
     public void deleteCart(int prodId) {
@@ -175,10 +177,31 @@ public class UserService {
 
     /**
      * 通过关键字对商品进行模糊搜索
+     *
      * @param keyword
      * @return
      */
     public List<Product> searchKeyword(String keyword) {
         return userDao.searchKeyword(keyword);
+    }
+
+    /**
+     * 通过关键字对商品进行模糊分页搜索
+     *
+     * @param keyword
+     * @param startIndex
+     * @return
+     */
+    public List<Product> searchKeyword(String keyword, int startIndex, int length) {
+        return userDao.searchKeyword(keyword, startIndex, length);
+    }
+
+    public int searchKeywordRows(String inputContent) {
+        return userDao.searchKeywordRows(inputContent);
+    }
+
+
+    public List<Product> findNewProds(int i) {
+        return userDao.findNewProds(i);
     }
 }

@@ -99,3 +99,94 @@ SELECT * FROM product
 WHERE lv = 'AA'
 OR type = '?'
 OR producingArea = '?'
+
+//搜索功能，采用模糊查询
+SELECT * FROM
+(SELECT * FROM
+product
+WHERE productName like '%咖啡%' OR brand like '%咖啡%' OR tast like '%咖啡%'
+UNION
+SELECT * FROM product WHERE lv = '咖啡' OR type = '咖啡' OR producingArea = '咖啡') AS pprod,pics
+WHERE pprod.productId = pics.productId GROUP BY pprod.productId
+
+//使用搜索功能时，只查询数据行数的语句
+SELECT COUNT(DISTINCT pprod.productId) FROM
+(SELECT * FROM
+product
+WHERE productName like '%咖啡%' OR brand like '%咖啡%' OR tast like '%咖啡%'
+UNION
+SELECT * FROM product WHERE lv = '咖啡' OR type = '咖啡' OR producingArea = '咖啡') AS pprod,pics
+WHERE pprod.productId = pics.productId
+
+java为我们提供了选择，可以让我们创建指针可以自由移动的结果集，所需要做的只有一件事，
+就是在创建Statement的时候，加上两个参数：
+        try {
+            //Statement statement = connection.createStatement();
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ResultSet resultSet = statement.executeQuery("select * from " + tableName);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+这样获得的结果集，指针就可以在其中自由移动。然后，就可以用如下方法获取结果集的行数：
+
+        int rowCount = 0;
+        try {
+            resultSet.last();
+            rowCount = resultSet.getRow();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+1 - 9 1
+10 - 18 2
+
+(rows - 1) / 9 + 1
+
+   <%
+                    Integer totalPages = (Integer) request.getAttribute("totalPages");
+                    Integer currentPage = (Integer) request.getAttribute("currentPage");
+                    int i = 1;
+                    for (i = 1; i <= totalPages; i++) {
+                %>
+                <li><a href="#"><%=i%></a></li>
+                <%
+                    }
+                %>
+
+
+                type
+                 咖啡粉
+                 成品
+                 咖啡豆
+                 咖啡条
+                 brand
+                lv tast good
+
+最受欢迎
+品牌
+    <<<
+    雀巢
+    麦斯威尔
+    中原
+    意利
+    悠诗诗
+    >>>
+    星巴克
+    拉瓦萨
+    吉意欧
+    奢斐
+    果珍
+    天美华乳
+    柯林
+    旧街场
+口味
+    狂野、清香、浓烈、芳香、香甜
+品质
+    AA A B C
+
+
+
+

@@ -1,9 +1,11 @@
 package cn.phoenix.evacafe.domain;
 
+import cn.phoenix.evacafe.domain.base.CafeObj;
+
 /**
  * Created by Phoenix on 2016/7/8.
  */
-public class Orders {
+public class Orders extends CafeObj {
     //用户名，外键
     private String username;
     //商品编号

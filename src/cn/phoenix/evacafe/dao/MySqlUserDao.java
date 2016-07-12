@@ -221,7 +221,6 @@ public class MySqlUserDao implements UserDao {
                 statement1.setString(1, username);
                 statement1.setInt(2, prodId);
                 int i = statement1.executeUpdate();
-                System.out.println(i);
 
                 if (i > 0) {
                     return true;
@@ -307,12 +306,6 @@ public class MySqlUserDao implements UserDao {
 
     }
 
-    @Test
-    public void test() {
-        List<Product> s = searchKeyword("越南");
-        System.out.println("ss");
-    }
-
     @Override
     public List<Product> searchKeyword(String keyword) {
         String searchSql = "SELECT * FROM (SELECT * FROM product WHERE productName like ? OR brand like ? OR tast like ? UNION SELECT * FROM product WHERE lv = ? OR type = ? OR producingArea = ?) AS pprod,pics WHERE pprod.productId = pics.productId GROUP BY pprod.productId";
@@ -333,7 +326,6 @@ public class MySqlUserDao implements UserDao {
 
             resultSet = statement.executeQuery();
             List<Product> prods = new ArrayList<Product>();
-
             while (resultSet.next()) {
                 Product prod = createProd(resultSet);
                 prods.add(prod);
@@ -343,6 +335,112 @@ public class MySqlUserDao implements UserDao {
             } else {
                 return prods;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(connection, statement, resultSet);
+        }
+    }
+
+    @Override
+    public List<Product> searchKeyword(String keyword, int startIndex, int length) {
+        String searchSql = "SELECT * FROM (SELECT * FROM product WHERE productName like ? OR brand like ? OR tast like ? UNION SELECT * FROM product WHERE lv = ? OR type = ? OR producingArea = ?) AS pprod,pics WHERE pprod.productId = pics.productId GROUP BY pprod.productId LIMIT ?,?";
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement(searchSql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            statement.setString(1, "%" + keyword + "%");
+            statement.setString(2, "%" + keyword + "%");
+            statement.setString(3, "%" + keyword + "%");
+            statement.setString(4, keyword);
+            statement.setString(5, keyword);
+            statement.setString(6, keyword);
+            statement.setInt(7, startIndex);
+            statement.setInt(8, length);
+
+            resultSet = statement.executeQuery();
+            List<Product> prods = new ArrayList<Product>();
+            while (resultSet.next()) {
+                Product prod = createProd(resultSet);
+                prods.add(prod);
+            }
+            if (prods.size() == 0) {
+                return null;
+            } else {
+                return prods;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(connection, statement, resultSet);
+        }
+    }
+
+    @Override
+    public int searchKeywordRows(String keyword) {
+        String searchSql = "SELECT COUNT(DISTINCT pprod.productId) FROM (SELECT * FROM product WHERE productName like ? OR brand like ? OR tast like ? UNION SELECT * FROM product WHERE lv = ? OR type = ? OR producingArea = ?) AS pprod,pics WHERE pprod.productId = pics.productId";
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement(searchSql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            statement.setString(1, "%" + keyword + "%");
+            statement.setString(2, "%" + keyword + "%");
+            statement.setString(3, "%" + keyword + "%");
+            statement.setString(4, keyword);
+            statement.setString(5, keyword);
+            statement.setString(6, keyword);
+
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            } else {
+                return 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DaoUtils.close(connection, statement, resultSet);
+        }
+    }
+
+    @Test
+    public void test() {
+        List<Product> s = findNewProds(3);
+        //int sss = searchKeywordRows("咖啡");
+        System.out.println("ss");
+    }
+
+    @Override
+    public List<Product> findNewProds(int rows) {
+        String searchSql = "SELECT * FROM product,(SELECT * FROM pics GROUP BY productId) AS ppics WHERE product.productId = ppics.productId ORDER BY ppics.productId DESC LIMIT ?";
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection(ConfigUtils.getConnecitonUrl(), ConfigUtils.getUsername(), ConfigUtils.getPassword());
+            statement = connection.prepareStatement(searchSql);
+            statement.setInt(1, rows);
+            resultSet = statement.executeQuery();
+
+            List<Product> prods = new ArrayList<Product>();
+            while (resultSet.next()) {
+                Product prod = createProd(resultSet);
+                prods.add(prod);
+            }
+            return prods;
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -506,7 +604,6 @@ public class MySqlUserDao implements UserDao {
                     orderses.add(orders);
                 }
             }
-            System.out.println("ss");
             return orderses;
         } catch (Exception e) {
             e.printStackTrace();

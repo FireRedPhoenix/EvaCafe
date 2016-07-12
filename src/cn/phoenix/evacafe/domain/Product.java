@@ -1,12 +1,14 @@
 package cn.phoenix.evacafe.domain;
 
+import cn.phoenix.evacafe.domain.base.CafeObj;
+
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Phoenix on 2016/7/8.
  */
-public class Product {
+public class Product extends CafeObj {
     //商品编号
     private int productId;
     //商品名称
