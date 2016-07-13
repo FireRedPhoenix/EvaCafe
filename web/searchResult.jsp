@@ -56,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>${sessionScope.user.username}
                         </li>
                         <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a
-                                href="${pageContext.request.contextPath}/LogInOutServlet?type=logout">exit</a></li>
+                                href="${pageContext.request.contextPath}/LogInOutServlet?type=logout">退出</a></li>
                     </c:if>
                     <c:if test="${sessionScope.user == null}">
                         <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a

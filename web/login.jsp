@@ -212,7 +212,7 @@
                                     </div>
                                 </ul>
                             </li>
-                            <li><a href="mail.html">联系我们</a></li>
+                            <%--<li><a href="mail.html">联系我们</a></li>--%>
                         </ul>
                     </div>
                 </nav>
@@ -265,7 +265,7 @@
         <p class="est animated wow zoomIn" data-wow-delay=".5s">最好的咖啡，最好的时光</p>
 
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-            <form method="post" action="${pageContext.request.contextPath}/LogInOutServlet?type=login" name="form">
+            <form method="post" action="${pageContext.request.contextPath}/LogInOutServlet?type=login&mreferer=${requestScope.mreferer}" name="form">
                 <input type="text" placeholder="用户名" name="username">
                 <input type="password" placeholder="密码" name="password">
 
@@ -364,7 +364,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-            <h2><a href="index.html">最好的咖啡屋<span>shop anywhere</span></a></h2>
+            <h2><a href="index.jsp">咖啡时光<span>品味，随心所欲</span></a></h2>
         </div>
         <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
             <p>Copyright &copy; 2016.Best Store All rights reserved.

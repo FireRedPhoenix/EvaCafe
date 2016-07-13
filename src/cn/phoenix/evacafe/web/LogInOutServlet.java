@@ -29,17 +29,25 @@ public class LogInOutServlet extends HttpServlet {
         UserService userService = new UserService();
 
         if (type.equals("enterLogin")) {
-            response.sendRedirect(request.getContextPath() + "/login.jsp");
+//            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            System.out.println(request.getHeader("referer"));
+            request.setAttribute("mreferer", request.getHeader("referer"));
+            request.getRequestDispatcher("/login.jsp");
+            return;
         } else if (type.equals("login")) {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
+            String mReferer = request.getParameter("mreferer");
+
+            System.out.println(mReferer);
 
             User user = userService.userLogin(username, password);
             if (user != null) {
                 //登录成功，返回index界面
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect(request.getContextPath() + "/index.jsp");
+//                response.sendRedirect(request.getContextPath() + "/index.jsp");
+                response.sendRedirect(mReferer);
                 return;
             } else {
                 //登录失败，返回Login界面

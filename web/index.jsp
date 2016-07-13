@@ -66,7 +66,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>${sessionScope.user.username}
                         </li>
                         <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a
-                                href="${pageContext.request.contextPath}/LogInOutServlet?type=logout">exit</a></li>
+                                href="${pageContext.request.contextPath}/LogInOutServlet?type=logout">退出</a></li>
                     </c:if>
                     <c:if test="${sessionScope.user == null}">
                         <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a
@@ -218,20 +218,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 </li>
                                             </ul>
                                         </div>
-                                        <%--<div class="col-sm-4">--%>
-                                        <%--<ul class="multi-column-dropdown">--%>
-                                        <%--<h6>Decorations</h6>--%>
-                                        <%--<li><a href="furniture.html">Toys</a></li>--%>
-                                        <%--<li><a href="furniture.html">Wall Clock</a></li>--%>
-                                        <%--<li><a href="furniture.html">Lighting</a></li>--%>
-                                        <%--<li><a href="furniture.html">Top Brands</a></li>--%>
-                                        <%--</ul>--%>
-                                        <%--</div>--%>
                                         <div class="clearfix"></div>
                                     </div>
                                 </ul>
                             </li>
-                            <li><a href="mail.html">联系我们</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -381,7 +371,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-3 new-collections-grid">
                 <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
                     <div class="new-collections-grid1-image">
-                        <a href="single.html" class="product-image"><img
+                        <a href="${pageContext.request.contextPath}/ProdDetailsServlet?prodId=${sessionScope.hotProds[0].productId}"
+                           class="product-image"><img
                                 src="images/products/${sessionScope.hotProds[0].paths[0]}" alt=" "
                                 class="img-responsive"/></a>
 
@@ -770,23 +761,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <div class="footer-grid-sub-grids">
                     <div class="footer-grid-sub-grid-left">
-                        <a href="single.html"><img src="images/9.jpg" alt=" " class="img-responsive"/></a>
+                        <a href="http://www.csdn.net/"><img src="images/9.jpg" alt=" " class="img-responsive"/></a>
                     </div>
                     <div class="footer-grid-sub-grid-right">
-                        <h4><a href="single.html">http://www.yunweipai.com/archives/8354.html?ref=myread</a></h4>
+                        <h4><a href="http://www.csdn.net/">我们的CSDN博客</a></h4>
 
-                        <p>发表于 On 12/7/2016</p>
+                        <p>发表于 12/7/2016</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="footer-grid-sub-grids">
                     <div class="footer-grid-sub-grid-left">
-                        <a href="single.html"><img src="images/10.jpg" alt=" " class="img-responsive"/></a>
+                        <a href="http://www.cnblogs.com/"><img src="images/10.jpg" alt=" " class="img-responsive"/></a>
                     </div>
                     <div class="footer-grid-sub-grid-right">
-                        <h4><a href="single.html">http://my.csdn.net/my/mycsdn</a></h4>
+                        <h4><a href="http://www.cnblogs.com/">我们的博客园博客</a></h4>
 
-                        <p>发表于 On 12/7/2016</p>
+                        <p>发表于 12/7/2016</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>

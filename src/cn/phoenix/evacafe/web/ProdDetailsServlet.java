@@ -22,8 +22,8 @@ public class ProdDetailsServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String prodId = request.getParameter("prodId");
-
         UserService userService = new UserService();
         //根据id获取商品对象
         Product prod = userService.findProdById(Integer.parseInt(prodId));

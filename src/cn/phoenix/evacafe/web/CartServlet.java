@@ -23,6 +23,7 @@ public class CartServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession(false);
         //若用户未登录，则重定向到login.jsp登录页面
         if (session == null || session.getAttribute("user") == null) {

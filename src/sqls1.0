@@ -1,0 +1,395 @@
+create table User(
+username varchar(20) primary key,
+password varchar(20) not null,
+rest double not null,
+buyTimes int not null,
+waitToAccept int not null,
+waitToPay int not null,
+phoneNumber varchar(11),
+email varchar(30)
+);
+
+create table Product(
+productId int primary key auto_increment,
+productName varchar(30),
+type varchar(20),
+brand varchar(30),
+packaging varchar(30),
+lv varchar(10),
+introduction varchar(100),
+producingArea varchar(20),
+quantity int,
+price double,
+tast varchar(8),
+cupSize varchar(5),
+concentrations varchar(8),
+material varchar(10),
+weight double,
+capacity double,
+sugar varchar(8),
+containsMilk bit,
+spice varchar(18),
+makerType varchar(18),
+power int,
+good int not null,
+ordinary int not null,
+bad int not null
+);
+
+create table Pics(
+picId int primary key auto_increment,
+path varchar(50),
+productId int,
+foreign key(productId) references Product(productId)
+);
+
+create table cart(
+cartId int primary key auto_increment,
+username varchar(20),
+productId int,
+nums int,
+foreign key(username) references User(username)
+);
+
+create table Orders(
+orderId int primary key auto_increment,
+username varchar(20),
+productId int,
+status varchar(20),
+productQuantity int,
+isEvaluated bit,
+time varchar(20),
+address varchar(50),
+isPaid bit,
+foreign key(username) references User(username),
+foreign key(productId) references Product(productId)
+);
+
+CREATE TABLE Review(
+rId int PRIMARY KEY AUTO_INCREMENT,
+rview VARCHAR(1000) NOT NULL,
+productId int NOT NULL,
+username VARCHAR(20) NOT NULL,
+FOREIGN KEY(productId) REFERENCES Product(productId),
+FOREIGN KEY(username) REFERENCES User(username)
+);
+
+insert into Product values(12,'麦斯威尔特浓速溶咖啡60条（780克/盒）','咖啡条','麦斯威尔','袋装','AA','慢火烘焙，千锤百炼只为释放本真瞬间','牙买加',887,100,'浓烈',null,null,null,null,null,null,null,null,null,null,112,5,3);
+insert into Pics values (16,'14.jpg',12);
+
+insert into Product values(13,'咖啡粉速溶咖啡三合一创意多口味 30条 480g盒装','咖啡条','云南小粒咖啡','袋装','A','多种口味不应该被当做概念，生活原本就需要不一样的体验','中国',8937,32,'清香',null,null,null,null,null,null,null,null,null,null,347,12,5);
+insert into Pics values (17,'15.jpg',13);
+
+insert into Product values(14,'巴西风味无蔗糖咖啡二合一 新加坡速溶咖啡粉','咖啡粉','铭咖啡','袋装','A','香浓 无法割舍','巴西',3578,78,'香甜',null,null,null,null,null,null,null,null,null,null,873,43,7);
+insert into Pics values (18,'16.jpg',14);
+
+insert into Product values(15,'单品咖啡胶囊21粒罐装 意大利进口 illy咖啡胶囊机专用','咖啡粉','意利咖啡胶囊','罐装','B','细细感受它深沉、平稳的风味，享受它所赋予的特殊的乐趣','肯尼亚',877,118,'狂野',null,null,null,null,null,null,null,null,null,null,845,45,8);
+insert into Pics values (19,'17.jpg',15);
+
+insert into Product values(16,'原装进口Mountain Peak 蓝山速溶咖啡56.7g','咖啡粉','牙买加速溶咖啡','罐装','A','传统工艺和相待设备精心烘焙加工而成，香气浓郁持久而含蓄','牙买加',524,98,'清香',null,null,null,null,null,null,null,null,null,null,832,23,3);
+insert into Pics values (20,'18.jpg',16);
+
+
+insert into Product values(17,'牙买加原装进口蓝山咖啡豆 114g麻袋装 中度烘培 三袋装','咖啡豆','牙买加咖啡豆 ','袋装','AA','牙买加原装进口，品质保证',
+'牙买加',621,78,'浓烈',null,null,null,null,null,null,null,null,null,null,934,41,3);
+insert into Pics values (21,'19.jpg',17);
+
+insert into Product values(18,'中原三合一速溶咖啡粉800g 二袋优惠装','咖啡条','中原 ','袋装','A','每粒咖啡豆都是来自越南咖啡区挑选出来，一奶油烘焙而成，奶香浓郁，咖啡醇厚','哥斯达黎加',732,82,'香甜',null,null,null,null,null,null,null,null,null,null,1482,31,7);
+insert into Pics values (22,'20.jpg',18);
+
+
+insert into Product values(19,'铭氏咖啡 黑袋 意大利特浓咖啡豆454g','咖啡豆','铭氏','袋装','AA','新鲜烘焙，浓厚的油脂，具有丰富的层次感，适合追求时尚的你','意大利',418,56,'芳香',null,null,null,null,null,null,null,null,null,null,863,45,1);
+insert into Pics values (23,'21.jpg',19);
+
+insert into Product values(20,'吉意欧GEO哥伦比亚咖啡豆500g','咖啡豆','吉意欧',
+'袋装','A','香气浓郁充实，丝般柔滑，层次分明，被誉为“绿色的金子”','哥伦比亚',724,35,'香甜',null,null,null,null,null,null,null,null,null,null,936,24,7);
+insert into Pics values (24,'22.jpg',20);
+
+
+insert into Product values(21,'三合一白咖啡880g ','咖啡条','老街场','盒装','C','诚信，带来的信赖','马来西亚',937,72,'香甜',null,null,null,null,null,null,null,null,null,null,364,25,6);
+insert into Pics values (25,'23.jpg',21);
+
+
+insert into Product values(22,'30e挂耳式咖啡无糖纯黑咖啡粉10g*10包','挂耳咖啡','四季工坊','盒装','B','精心选材，新鲜烘培。不是所有的挂耳咖啡都叫Espresso 30e',
+'意大利',843,56,'狂野',null,null,null,null,null,null,null,null,null,null,923,15,8);
+insert into Pics values (26,'24.jpg',22);
+
+
+insert into Product values(23,'滤挂式无糖黑咖啡 多种口味','咖啡粉','子鱼','盒装','B','总有一种口味让你倾心','印尼',631,69,
+'芳香',null,null,null,null,null,null,null,null,null,null,836,52,5);
+insert into Pics values (27,'25.jpg',23);
+
+
+insert into Product values(24,'铭氏咖啡 袋泡咖啡7g*5包 35g','咖啡粉','铭氏',
+'袋装','C','随身携带，懒人福音','安提瓜区',832,15,
+'芳香',null,null,null,null,null,null,null,null,null,null,812,23,9);
+insert into Pics values (28,'26.jpg',24);
+
+
+insert into Product values(25,'GEO摩卡咖啡豆500g','咖啡豆','吉意欧','袋装','B','老朋友,新模样 包装升级，价格不变','夏威夷',456,31,
+'清香',null,null,null,null,null,null,null,null,null,null,514,21,5);
+insert into Pics values (29,'27.jpg',25);
+
+
+insert into Product values(26,'GEO 蓝山口味挂耳咖啡8g 滤泡式','挂耳咖啡','吉意欧','袋装','B','清新雅致 温柔明亮 富有持久的水果芳香','夏威夷',214,24,
+'清香',null,null,null,null,null,null,null,null,null,null,142,12,4);
+insert into Pics values (30,'28.jpg',26);
+
+
+insert into Product values(27,'原装进口国太楼挂耳咖啡滤挂式咖啡摩卡 40g','挂耳咖啡','国太楼','袋装','C','只为随时随地献上一杯香浓咖啡','日本',142,15,
+'清香',null,null,null,null,null,null,null,null,null,null,58,35,7);
+insert into Pics values (31,'29.jpg',27);
+
+
+insert into Product values(28,'滤泡式焙炒咖啡粉 摩卡挂耳咖啡8g*8袋','挂耳咖啡',
+'拉瓦萨','盒装','C','随手一泡，想喝就喝，就这么简单！','印尼',52,25,
+'香甜',null,null,null,null,null,null,null,null,null,null,75,25,4);
+insert into Pics values (32,'30.jpg',28);
+
+
+insert into Product values(29,'滤泡式焙炒咖啡粉 黑色经典挂耳咖啡8g*50袋','挂耳咖啡',
+'吉意欧','袋装','C','新鲜出炉，品质管理','古巴',61,34,
+'狂野',null,null,null,null,null,null,null,null,null,null,912,52,10);
+insert into Pics values (33,'31.jpg',29);
+
+
+
+insert into Product values(30,'意式特浓进口咖啡豆 原味无糖苦咖啡 滤挂滤泡式耳挂咖啡','挂耳咖啡','奢斐','盒装','AA','你的随身咖啡馆','意大利',75,53,
+'浓烈',null,null,null,null,null,null,null,null,null,null,632,42,15);
+insert into Pics values (34,'32.jpg',30);
+
+
+insert into Product values(31,'Nestle雀巢咖啡醇品黑咖啡罐装 500g','咖啡粉',
+'雀巢','罐装','B','一杯在手，口感丰厚，从此爱上黑咖啡','牙买加',614,25,
+'香甜',null,null,null,null,null,null,null,null,null,null,837,63,19);
+insert into Pics values (35,'33.jpg',31);
+
+
+insert into Product values(32,'Nestle雀巢醇品100%纯咖啡100g','咖啡粉',
+'雀巢','罐装','B','自然馈赠，纯咖啡','牙买加',352,35,
+'香甜',null,null,null,null,null,null,null,null,null,null,613,43,8);
+insert into Pics values (36,'34.jpg',32);
+
+
+insert into Product values(33,'法国进口 雀巢（Nestle）金牌进口速溶咖啡礼盒','咖啡粉',
+'雀巢','盒装','A','优选产地，自然恩泽','法国',104,315,
+'芳香',null,null,null,null,null,null,null,null,null,null,261,62,7);
+insert into Pics values (37,'35.jpg',33);
+
+
+insert into Product values(34,'雀巢（Nestle） 咖啡（香滑）罐装 180ml*6联包','成品',
+'雀巢','瓶装','B','罐装设计 贴心方便','中国',836,15,
+'狂野',null,null,null,null,null,null,null,null,null,null,721,15,5);
+insert into Pics values (38,'36.jpg',34);
+
+
+insert into Product values(35,'雀巢（Nestle）（丝滑摩卡）咖啡瓶装268ml*15整箱','成品',
+'雀巢','瓶装','A','口感醇厚 丝滑怡香','中国',683,80,
+'香甜',null,null,null,null,null,null,null,null,null,null,643,31,8);
+insert into Pics values (39,'37.jpg',35);
+
+
+insert into Product values(36,'咖啡（丝滑拿铁）瓶装 268ml*3联包','成品',
+'雀巢','瓶装','B','今天，从雀巢咖啡开始','中国',713,15,
+'芳香',null,null,null,null,null,null,null,null,null,null,463,23,1);
+insert into Pics values (40,'38.jpg',36);
+
+
+insert into Product values(37,' (特浓)咖啡180ml *24听 整箱','成品','雀巢','瓶装','A',
+'雀巢，活出敢性','中国',392,87,
+'清香',null,null,null,null,null,null,null,null,null,null,234,13,3);
+insert into Pics values (41,'39.jpg',37);
+
+
+insert into Product values(38,'意式醇香拿铁咖啡280ml*15瓶/箱 整箱','成品','雅哈','瓶装','A','醇正浓缩咖啡，带您领略意大利咖啡艺术','中国',532,69,
+'清香',null,null,null,null,null,null,null,null,null,null,543,24,6);
+insert into Pics values (42,'40.jpg',38);
+
+
+insert into Product values(39,'美国原装进口星冰乐即饮咖啡 281ml*5瓶','成品','星巴克','瓶装','AA','星巴克，星冰乐','美国',214,79,
+'芳香',null,null,null,null,null,null,null,null,null,null,932,35,9);
+insert into Pics values (43,'41.jpg',39);
+
+
+insert into Product values(40,'星巴克咖啡 星冰乐瓶装即饮原味+摩卡味','成品','星巴克','瓶装','AA','不单是咖啡','美国',152,90,
+'清香',null,null,null,null,null,null,null,null,null,null,715,29,4);
+insert into Pics values (44,'42.jpg',40);
+
+
+insert into Product values(41,'美国进口食品 星巴克咖啡星巴克星冰乐原味','成品','星巴克','瓶装','A','啡尝冰咖 零度双暑','美国',82,89,
+'香甜',null,null,null,null,null,null,null,null,null,null,937,15,0);
+insert into Pics values (45,'43.jpg',41);
+
+
+
+insert into Product values(42,'雀巢咖啡醇品黑咖啡袋装 ','咖啡粉','雀巢','袋装','C','醇厚原香，悠然余味','法国',923,28,
+'芳香',null,null,null,null,null,null,null,null,null,null,1983,45,9);
+insert into Pics values (46,'44.jpg',42);
+
+
+insert into Product values(43,'雀巢咖啡丝滑拿铁240g ','咖啡粉','雀巢','袋装','B','享受挚爱丝滑拿铁，开始我的馆藏时光','法国',59,39,
+'清香',null,null,null,null,null,null,null,null,null,null,6341,83,16);
+insert into Pics values (47,'45.jpg',43);
+
+
+insert into Product values(44,'可可粉850g双巧克力starbucks烘焙原料冲调','咖啡粉','星巴克','罐装','A','冷热冲泡，随时星巴克','美国',351,89,
+'香甜',null,null,null,null,null,null,null,null,null,null,5642,48,2);
+insert into Pics values (48,'46.jpg',44);
+
+
+insert into Product values(45,'可可粉850g双巧克力starbucks烘焙原料冲调','咖啡条','星巴克','盒装','A','享受一份惬意时光','美国',219,95,
+'香甜',null,null,null,null,null,null,null,null,null,null,742,37,5);
+insert into Pics values (49,'47.jpg',45);
+
+
+
+insert into Product values(46,'日本进口咖啡 悠诗诗UCC 117速溶咖啡 90g','咖啡粉','诗悠悠','瓶装','A','随时随地，诗悠悠为您献上一杯香醇和喜悦','日本',743,48,
+'狂野',null,null,null,null,null,null,null,null,null,null,1543,54,19);
+insert into Pics values (50,'48.jpg',46);
+
+
+insert into Product values(47,'UCC(悠诗诗)118速溶咖啡100克/瓶','咖啡粉','诗悠悠','瓶装','A','夏日纵享激爽冰咖啡','日本',534,65,
+'清香',null,null,null,null,null,null,null,null,null,null,832,43,28);
+insert into Pics values (51,'49.jpg',47);
+
+
+insert into Product values(48,'ucc悠诗诗咖啡饮料 无糖咖啡','成品','诗悠悠','瓶装','B','冰咖啡来袭','中国',2935,71,
+'清香',null,null,null,null,null,null,null,null,null,null,1052,42,16);
+insert into Pics values (52,'50.jpg',48);
+
+
+insert into Product values(49,'创意陶瓷杯子情侣水杯咖啡杯带盖带勺','成品','瓷魂','杯子','B','简约 不简单','中国',1434,29,
+'NULL',null,null,null,null,null,null,null,null,null,null,423,26,3);
+insert into Pics values (53,'51.jpg',49);
+
+
+
+insert into Product values(50,' 情侣咖啡杯创意陶瓷水杯','成品','特美刻','杯子','A','贴心的设计，最好的服务','英国',623,59,
+'NULL',null,null,null,null,null,null,null,null,null,null,243,21,2);
+insert into Pics values (54,'52.jpg',50);
+
+
+
+insert into Product values(51,'陶瓷杯带盖 马克杯情侣咖啡杯','成品','特美刻','杯子','A','美好时刻，英国特美刻','英国',183,59,
+'NULL',null,null,null,null,null,null,null,null,null,null,424,17,2);
+insert into Pics values (55,'53.jpg',51);
+
+
+
+insert into Product values(52,'咖啡杯碟拉花咖啡杯14件套','成品','淘礼轩','杯子','A','咖啡，沉淀在光阴里的幸福','中国',1583,89,
+'NULL',null,null,null,null,null,null,null,null,null,null,452,41,6);
+insert into Pics values (56,'54.jpg',52);
+
+
+
+insert into Product values(53,'韩式陶瓷情侣水杯大容量','成品','亿嘉','杯子','B','线生活，马克杯','中国',563,24,
+'NULL',null,null,null,null,null,null,null,null,null,null,621,11,2);
+insert into Pics values (57,'54.jpg',53);
+
+
+
+insert into Product values(54,'小咖啡杯（送收纳架）+同款杯垫套装(埃菲尔铁塔）','成品','爱屋格林','杯子','AA','一人一杯，四人围坐，畅想未来，把握当下','中国',265,99,
+'NULL',null,null,null,null,null,null,null,null,null,null,243,21,4);
+insert into Pics values (58,'55.jpg',54);
+
+
+
+insert into Product values(55,' HD7450/00 咖啡机 “时尚金属款”','成品','飞利浦','咖啡机','A','清凉小家电，打造品味生活','中国',145,239,
+'NULL',null,null,null,null,null,null,null,null,null,null,534,46,8);
+insert into Pics values (59,'57.jpg',55);
+
+
+
+insert into Product values(56,' 泵压式咖啡机 家用 商务','成品','摩飞','咖啡机','AA','为咖啡发烧友定制','英国',121,1327,
+'NULL',null,null,null,null,null,null,null,null,null,null,32,7,1);
+insert into Pics values (60,'58.jpg',56);
+
+
+
+insert into Product values(57,'虹吸壶 三代精品咖啡壶咖啡机','成品','亚米','咖啡机','A','午后的阳光灿烂一切，从一杯袅袅香咖开始','英国',97,1569,
+'NULL',null,null,null,null,null,null,null,null,null,null,42,3,0);
+insert into Pics values (61,'59.jpg',57);
+
+
+
+insert into Product values(58,'咖啡豆研磨机 手动咖啡机磨粉机手摇磨豆机','成品','Hero','咖啡机','A','乐享时光，现磨咖啡醇香','中国',127,835,
+'NULL',null,null,null,null,null,null,null,null,null,null,143,6,1);
+insert into Pics values (62,'60.jpg',58);
+
+insert into Product values(59,'Hero法压壶 家用不锈钢冲茶器 法式咖啡壶','成品','Hero','咖啡机','AA','轻松享受 美味时光','法国',161,79,
+'NULL',null,null,null,null,null,null,null,null,null,null,621,3,0);
+insert into Pics values (63,'61.jpg',59);
+
+
+insert into Product values(60,'虹吸式咖啡壶 煮咖啡虹吸壶家用 虹吸式咖啡机 3人份','成品','Hero','咖啡机','A','乐享时光 在家即享','中国',82,168,
+'NULL',null,null,null,null,null,null,null,null,null,null,411,7,1);
+insert into Pics values (64,'62.jpg',60);
+
+insert into Product values(61,'MD-2001 入门级意式压力咖啡机 可打奶泡','成品','华迅仕','咖啡机','A','私人专属咖啡馆','中国',69,228,
+'NULL',null,null,null,null,null,null,null,null,null,null,312,9,0);
+insert into Pics values (65,'63.jpg',61);
+
+
+
+insert into Product values(62,'原装进口不锈钢过滤网一人份滴滤式咖啡壶','成品','HARIO ','咖啡机','B','一杯咖啡，快节奏里寻找慢生活','日本',48,248,
+'NULL',null,null,null,null,null,null,null,null,null,null,152,15,6);
+insert into Pics values (66,'64.jpg',62);
+
+
+insert into Product values(63,'法压壶 不锈钢冲茶器 法式咖啡壶 ','成品','Hero ','咖啡机','A','一杯咖啡，快节奏里寻找慢生活','美国',71,128,
+'NULL',null,null,null,null,null,null,null,null,null,null,316,5,0);
+insert into Pics values (67,'65.jpg',63);
+
+
+insert into Product values(64,'（eupa)咖啡机 滴漏式家用美式咖啡壶 茗茶机','成品','灿坤 ','咖啡机','AA','品生活 享受这一刻','中国',186,128,
+'NULL',null,null,null,null,null,null,null,null,null,null,275,9,0);
+insert into Pics values (68,'66.jpg',64);
+
+
+
+insert into Product values(65,'原装进口耐热玻璃滤滴式咖啡壶套装','成品',
+'HARIO','咖啡机','A','入门新手的推荐套装','日本',86,156,
+'NULL',null,null,null,null,null,null,null,null,null,null,175,10,1);
+insert into Pics values (69,'67.jpg',65);
+
+
+insert into Product values(66,'创意早餐陶瓷马克杯情侣咖啡杯牛奶杯带盖带勺','成品',
+'瓷魂','咖啡杯','A','因为健康 所以选择','巴黎',287,29,
+'NULL',null,null,null,null,null,null,null,null,null,null,316,24,4);
+insert into Pics values (70,'68.jpg',66);
+
+
+
+
+insert into Product values(67,'北欧复古卡通咖啡杯子','成品',
+'三脚猫','咖啡杯','A','用好看的杯子 喝白开水都是甜的','中国',487,21,
+'NULL',null,null,null,null,null,null,null,null,null,null,527,17,2);
+insert into Pics values (71,'69.jpg',67);
+
+
+insert into Product values(68,'陶瓷水杯套装家用陶瓷水具咖啡杯子套装组','成品',
+'三脚猫','咖啡杯','B','一场杯碟与咖啡的盛宴','中国',317,57,
+'NULL',null,null,null,null,null,null,null,null,null,null,415,21,6);
+insert into Pics values (72,'70.jpg',68);
+
+
+insert into Product values(69,'创意欧式陶瓷咖啡杯子套装情侣牛奶星巴克风格马克杯','成品','三脚猫','咖啡杯','A','精品始成','中国',215,39,
+'NULL',null,null,null,null,null,null,null,null,null,null,485,32,4);
+insert into Pics values (73,'71.jpg',69);
+
+
+
+insert into Product values(70,'创意个性陶瓷杯子咖啡杯牛奶杯','成品','悠瓷','咖啡杯','A','古朴典雅与现代艺术的碰撞','中国',314,27,
+'NULL',null,null,null,null,null,null,null,null,null,null,317,26,8);
+insert into Pics values (74,'72.jpg',70);
+
+
+
+insert into Product values(71,'马克杯带盖勺创意大容量陶瓷茶水杯子简约咖啡杯带盖 ','成品','BikuNana','咖啡杯','AA','一杯子的爱  用一辈子去爱','中国',527,38,
+'NULL',null,null,null,null,null,null,null,null,null,null,216,18,2);
+insert into Pics values (75,'73.jpg',71);
+
+
+
+
+

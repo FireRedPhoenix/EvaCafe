@@ -198,6 +198,11 @@ public class MySqlUserDao implements UserDao {
         }
     }
 
+    @Test
+    public void testAddToCart() {
+        addToCart("我是大魔王", 7);
+    }
+
     @Override
     public boolean addToCart(String username, int prodId) {
         String querySql = "SELECT * FROM cart WHERE username = ? AND productId = ?";
@@ -319,9 +324,9 @@ public class MySqlUserDao implements UserDao {
             statement.setString(1, "%" + keyword + "%");
             statement.setString(2, "%" + keyword + "%");
             statement.setString(3, "%" + keyword + "%");
-            statement.setString(4, keyword);
-            statement.setString(5, keyword);
-            statement.setString(6, keyword);
+            statement.setString(4, "%" + keyword + "%");
+            statement.setString(5, "%" + keyword + "%");
+            statement.setString(6, "%" + keyword + "%");
 
             resultSet = statement.executeQuery();
             List<Product> prods = new ArrayList<Product>();
@@ -676,7 +681,7 @@ public class MySqlUserDao implements UserDao {
 
     @Override
     public List<Orders> findOrdersByName(String username) {
-        String selectSql = "select Orders.isPaid,Product.productName,Orders.productId,orderId,status,productQuantity,isEvaluated,time,address,Product.price,Pics.path from Orders,Pics,Product where Orders.username=? and Orders.productId = Product.productId and product.productId = pics.productId";
+        String selectSql = "select Orders.isPaid,Product.productName,Orders.productId,orderId,status,productQuantity,isEvaluated,time,address,Product.price,Pics.path from Orders,Pics,Product where Orders.username=? and Orders.productId = Product.productId and product.productId = pics.productId ORDER BY orders.orderId DESC";
 
         Connection connection = null;
         PreparedStatement stat = null;

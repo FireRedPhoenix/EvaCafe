@@ -59,7 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>${sessionScope.user.username}
                         </li>
                         <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a
-                                href="${pageContext.request.contextPath}/LogInOutServlet?type=logout">exit</a></li>
+                                href="${pageContext.request.contextPath}/LogInOutServlet?type=logout">退出</a></li>
                     </c:if>
                     <c:if test="${sessionScope.user == null}">
                         <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a
@@ -224,7 +224,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                 </ul>
                             </li>
-                            <li><a href="mail.html">联系我们</a></li>
+                            <%--<li><a href="mail.html">联系我们</a></li>--%>
                         </ul>
                     </div>
                 </nav>
@@ -439,11 +439,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                           action="${pageContext.request.contextPath}/BuyServlet?type=buy&prodId=${requestScope.product.productId}">
                         <div>
                             <input style="margin-top: 10px;padding-left: 10px; width:200px;height:35px;margin-left: 0px;border:1px solid #cccccc;"
-                                   type="text" placeholder="请输入配送地址" value="" name="address"/>
+                                   type="text" placeholder="请输入配送地址" value="" name="address"/><font color="red">${addressMsg}</font>
                         </div>
                         <div>
                             <input style="padding-left:10px; width:80px;height:35px;margin-left: 0px;margin-top:25px;border:1px solid #cccccc;float:left;"
-                                   type="number" placeholder="数量" value="1" name="nums"/>${msg}</font>
+                                   type="number" placeholder="数量" value="1" name="nums"/><font color="red">${numMsg}</font>
                         </div>
                         <div class="clearfix"></div>
                         <div style="margin-top:30px;margin-left: 0px" class="occasion-cart">
@@ -518,7 +518,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <h4>添加评论</h4>
                                     <font color="red">${requestScope.reviewMsg}</font>
 
-                                    <form method="POST" action="${pageContext.request.contextPath}/ReviewServlet?prodId=${requestScope.product.productId}">
+                                    <form method="POST"
+                                          action="${pageContext.request.contextPath}/ReviewServlet?prodId=${requestScope.product.productId}">
                                         <%--<input type="text" value="Name" onfocus="this.value = '';"--%>
                                         <%--onblur="if (this.value == '') {this.value = 'Name';}" required="">--%>
                                         <%--<input type="email" value="Email" onfocus="this.value = '';"--%>
@@ -618,23 +619,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <div class="footer-grid-sub-grids">
                     <div class="footer-grid-sub-grid-left">
-                        <a href="single.html"><img src="images/9.jpg" alt=" " class="img-responsive"/></a>
+                        <a href="http://www.csdn.net/"><img src="images/9.jpg" alt=" " class="img-responsive"/></a>
                     </div>
                     <div class="footer-grid-sub-grid-right">
-                        <h4><a href="single.html">http://www.yunweipai.com/archives/8354.html?ref=myread</a></h4>
+                        <h4><a href="http://www.csdn.net/">我们的CSDN博客</a></h4>
 
-                        <p>发表于 On 12/7/2016</p>
+                        <p>发表于 12/7/2016</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="footer-grid-sub-grids">
                     <div class="footer-grid-sub-grid-left">
-                        <a href="single.html"><img src="images/10.jpg" alt=" " class="img-responsive"/></a>
+                        <a href="http://www.cnblogs.com/"><img src="images/10.jpg" alt=" " class="img-responsive"/></a>
                     </div>
                     <div class="footer-grid-sub-grid-right">
-                        <h4><a href="single.html">http://my.csdn.net/my/mycsdn</a></h4>
+                        <h4><a href="http://www.cnblogs.com/">我们的博客园博客</a></h4>
 
-                        <p>发表于 On 12/7/2016</p>
+                        <p>发表于 12/7/2016</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -642,7 +643,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"></div>
         </div>
         <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-            <h2><a href="index.html">最好的咖啡屋<span>shop anywhere</span></a></h2>
+            <h2><a href="index.jsp">咖啡时光<span>品味，随心所欲</span></a></h2>
         </div>
         <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
             <p>Copyright &copy; 2016.Best Store All rights reserved.
